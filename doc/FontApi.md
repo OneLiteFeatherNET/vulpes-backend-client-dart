@@ -1,8 +1,8 @@
-# vulpes_client.api.FontApi
+# vulpes_backend_client.api.FontApi
 
 ## Load the API package
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -28,9 +28,9 @@ Adds a new font to the database. The font is created with the given properties.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final FontModelDTO fontModelDTO = ; // FontModelDTO | 
 
 try {
@@ -71,9 +71,9 @@ Deletes all fonts from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 
 try {
     final response = api.deleteAll1();
@@ -110,9 +110,9 @@ Gets all fonts from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -153,9 +153,9 @@ Gets all fonts from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -196,9 +196,9 @@ Gets a font by ID from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -239,9 +239,9 @@ Gets the characters of a font by its ID from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -282,9 +282,9 @@ Removes a font by ID from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -325,9 +325,9 @@ Updates a font in the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getFontApi();
+final api = VulpesBackendClient().getFontApi();
 final FontModelDTO fontModelDTO = ; // FontModelDTO | 
 
 try {

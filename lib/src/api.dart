@@ -4,23 +4,23 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:vulpes_client/src/serializers.dart';
-import 'package:vulpes_client/src/auth/api_key_auth.dart';
-import 'package:vulpes_client/src/auth/basic_auth.dart';
-import 'package:vulpes_client/src/auth/bearer_auth.dart';
-import 'package:vulpes_client/src/auth/oauth.dart';
-import 'package:vulpes_client/src/net/onelitefeather/vulpes/client/api/attribute_api.dart';
-import 'package:vulpes_client/src/net/onelitefeather/vulpes/client/api/font_api.dart';
-import 'package:vulpes_client/src/net/onelitefeather/vulpes/client/api/item_api.dart';
-import 'package:vulpes_client/src/net/onelitefeather/vulpes/client/api/notification_api.dart';
+import 'package:vulpes_backend_client/src/serializers.dart';
+import 'package:vulpes_backend_client/src/auth/api_key_auth.dart';
+import 'package:vulpes_backend_client/src/auth/basic_auth.dart';
+import 'package:vulpes_backend_client/src/auth/bearer_auth.dart';
+import 'package:vulpes_backend_client/src/auth/oauth.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/attribute_api.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/font_api.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/item_api.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/notification_api.dart';
 
-class VulpesClient {
+class VulpesBackendClient {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
   final Serializers serializers;
 
-  VulpesClient({
+  VulpesBackendClient({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,

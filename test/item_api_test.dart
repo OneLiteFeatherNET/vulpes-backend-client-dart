@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:vulpes_client/vulpes_client.dart';
+import 'package:vulpes_backend_client/vulpes_backend_client.dart';
 
 
 /// tests for ItemApi
 void main() {
-  final instance = VulpesClient().getItemApi();
+  final instance = VulpesBackendClient().getItemApi();
 
   group(ItemApi, () {
     // Add a new item

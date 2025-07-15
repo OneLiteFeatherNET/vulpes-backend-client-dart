@@ -1,8 +1,8 @@
-# vulpes_client.model.ItemModelResponseDTOItemModelErrorDTO
+# vulpes_backend_client.model.ItemModelResponseDTOItemModelErrorDTO
 
 ## Load the model package
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 ```
 
 ## Properties

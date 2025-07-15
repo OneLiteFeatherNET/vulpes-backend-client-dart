@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:vulpes_client/vulpes_client.dart';
+import 'package:vulpes_backend_client/vulpes_backend_client.dart';
 
 
 /// tests for AttributeApi
 void main() {
-  final instance = VulpesClient().getAttributeApi();
+  final instance = VulpesBackendClient().getAttributeApi();
 
   group(AttributeApi, () {
     // Add a new attribute

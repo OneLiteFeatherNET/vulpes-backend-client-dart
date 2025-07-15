@@ -3,7 +3,7 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:vulpes_client/src/auth/auth.dart';
+import 'package:vulpes_backend_client/src/auth/auth.dart';
 
 class BearerAuthInterceptor extends AuthInterceptor {
   final Map<String, String> tokens = {};

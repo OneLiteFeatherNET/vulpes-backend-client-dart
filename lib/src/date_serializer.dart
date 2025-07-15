@@ -4,7 +4,7 @@
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'package:vulpes_client/src/net/onelitefeather/vulpes/client/model/date.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/date.dart';
 
 class DateSerializer implements PrimitiveSerializer<Date> {
 

@@ -1,8 +1,8 @@
-# vulpes_client.api.NotificationApi
+# vulpes_backend_client.api.NotificationApi
 
 ## Load the API package
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -27,9 +27,9 @@ Adds a new notification to the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final NotificationModelDTO notificationModelDTO = ; // NotificationModelDTO | the notification model to be added
 
 try {
@@ -70,9 +70,9 @@ Deletes all notifications from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 
 try {
     final response = api.deleteAll3();
@@ -109,9 +109,9 @@ Retrieves all notifications from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -152,9 +152,9 @@ Retrieves all notifications from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -195,9 +195,9 @@ Retrieves a notification from the database by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | the ID of the notification to retrieve
 
 try {
@@ -238,9 +238,9 @@ Removes a notification from the database by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | the ID of the notification to remove
 
 try {
@@ -281,9 +281,9 @@ Updates an existing notification in the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getNotificationApi();
+final api = VulpesBackendClient().getNotificationApi();
 final NotificationModelDTO notificationModelDTO = ; // NotificationModelDTO | the notification model to update
 
 try {

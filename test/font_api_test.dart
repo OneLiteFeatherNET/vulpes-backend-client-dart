@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:vulpes_client/vulpes_client.dart';
+import 'package:vulpes_backend_client/vulpes_backend_client.dart';
 
 
 /// tests for FontApi
 void main() {
-  final instance = VulpesClient().getFontApi();
+  final instance = VulpesBackendClient().getFontApi();
 
   group(FontApi, () {
     // Add a new font

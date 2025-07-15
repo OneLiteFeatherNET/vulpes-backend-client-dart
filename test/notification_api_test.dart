@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:vulpes_client/vulpes_client.dart';
+import 'package:vulpes_backend_client/vulpes_backend_client.dart';
 
 
 /// tests for NotificationApi
 void main() {
-  final instance = VulpesClient().getNotificationApi();
+  final instance = VulpesBackendClient().getNotificationApi();
 
   group(NotificationApi, () {
     // Add a new notification

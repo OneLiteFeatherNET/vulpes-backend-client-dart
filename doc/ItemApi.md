@@ -1,8 +1,8 @@
-# vulpes_client.api.ItemApi
+# vulpes_backend_client.api.ItemApi
 
 ## Load the API package
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -30,9 +30,9 @@ Adds a new item to the database. The item is created with the given properties.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final ItemModelDTO itemModelDTO = ; // ItemModelDTO | 
 
 try {
@@ -73,9 +73,9 @@ Deletes all items from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 
 try {
     final response = api.deleteAll2();
@@ -112,9 +112,9 @@ Retrieves all items from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -155,9 +155,9 @@ Retrieves all items from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -198,9 +198,9 @@ Retrieves an item from the database by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -241,9 +241,9 @@ Retrieves the enchantments of an item by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -284,9 +284,9 @@ Retrieves all flags of an item by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -327,9 +327,9 @@ Retrieves all lore of an item by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -370,9 +370,9 @@ Removes an item from the database by its ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -413,9 +413,9 @@ Updates an item in the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getItemApi();
+final api = VulpesBackendClient().getItemApi();
 final ItemModelDTO itemModelDTO = ; // ItemModelDTO | 
 
 try {

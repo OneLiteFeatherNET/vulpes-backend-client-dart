@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:vulpes_client/vulpes_client.dart';
+import 'package:vulpes_backend_client/vulpes_backend_client.dart';
 
 // tests for AttributeModelResponseDTOAttributeModelDTO
 void main() {

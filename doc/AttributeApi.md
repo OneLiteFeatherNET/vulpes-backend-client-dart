@@ -1,8 +1,8 @@
-# vulpes_client.api.AttributeApi
+# vulpes_backend_client.api.AttributeApi
 
 ## Load the API package
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -26,9 +26,9 @@ Adds a new attribute to the database. The attribute is created with the given pr
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 final AttributeModelDTO attributeModelDTO = ; // AttributeModelDTO | 
 
 try {
@@ -69,9 +69,9 @@ Deletes the attribute with the given ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -112,9 +112,9 @@ Deletes all attributes from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 
 try {
     final response = api.deleteAll();
@@ -151,9 +151,9 @@ Gets all attributes from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -194,9 +194,9 @@ Gets all attributes from the database.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
@@ -237,9 +237,9 @@ Returns the attribute with the given ID.
 
 ### Example
 ```dart
-import 'package:vulpes_client/api.dart';
+import 'package:vulpes_backend_client/api.dart';
 
-final api = VulpesClient().getAttributeApi();
+final api = VulpesBackendClient().getAttributeApi();
 final AttributeModelDTO attributeModelDTO = ; // AttributeModelDTO | 
 
 try {
