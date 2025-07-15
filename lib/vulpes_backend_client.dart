@@ -14,6 +14,7 @@ export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/font_api.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/item_api.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/notification_api.dart';
+export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/sound_api.dart';
 
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_response_dto_attribute_model_dto.dart';
@@ -36,4 +37,7 @@ export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order_direction.dart';
+export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart';
+export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_error_dto.dart';
+export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_model_dto.dart';
 

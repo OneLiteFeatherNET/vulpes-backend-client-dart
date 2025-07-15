@@ -35,6 +35,9 @@ import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order_direction.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_model_dto.dart';
 
 part 'serializers.g.dart';
 
@@ -60,6 +63,9 @@ part 'serializers.g.dart';
   Sort,$Sort,
   SortOrder,
   SortOrderDirection,
+  SoundEventDTO,
+  SoundResponseDTOSoundErrorDTO,
+  SoundResponseDTOSoundModelDTO,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(Sort.serializer)

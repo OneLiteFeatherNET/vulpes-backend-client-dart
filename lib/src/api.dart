@@ -13,6 +13,7 @@ import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/font_api.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/item_api.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/notification_api.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/sound_api.dart';
 
 class VulpesBackendClient {
   static const String basePath = r'http://localhost';
@@ -90,5 +91,11 @@ class VulpesBackendClient {
   /// by doing that all interceptors will not be executed
   NotificationApi getNotificationApi() {
     return NotificationApi(dio, serializers);
+  }
+
+  /// Get SoundApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SoundApi getSoundApi() {
+    return SoundApi(dio, serializers);
   }
 }

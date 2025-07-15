@@ -27,6 +27,10 @@ doc/PageableMode.md
 doc/Sort.md
 doc/SortOrder.md
 doc/SortOrderDirection.md
+doc/SoundApi.md
+doc/SoundEventDTO.md
+doc/SoundResponseDTOSoundErrorDTO.md
+doc/SoundResponseDTOSoundModelDTO.md
 lib/src/api.dart
 lib/src/api_util.dart
 lib/src/auth/api_key_auth.dart
@@ -39,6 +43,7 @@ lib/src/net/onelitefeather/vulpes/backend/client/api/attribute_api.dart
 lib/src/net/onelitefeather/vulpes/backend/client/api/font_api.dart
 lib/src/net/onelitefeather/vulpes/backend/client/api/item_api.dart
 lib/src/net/onelitefeather/vulpes/backend/client/api/notification_api.dart
+lib/src/net/onelitefeather/vulpes/backend/client/api/sound_api.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_response_dto_attribute_model_dto.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_response_dto_attribute_model_error_dto.dart
@@ -61,6 +66,9 @@ lib/src/net/onelitefeather/vulpes/backend/client/model/pageable_mode.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/sort.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/sort_order.dart
 lib/src/net/onelitefeather/vulpes/backend/client/model/sort_order_direction.dart
+lib/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart
+lib/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_error_dto.dart
+lib/src/net/onelitefeather/vulpes/backend/client/model/sound_response_dto_sound_model_dto.dart
 lib/src/serializers.dart
 lib/vulpes_backend_client.dart
 pubspec.yaml
@@ -89,3 +97,7 @@ test/pageable_test.dart
 test/sort_order_direction_test.dart
 test/sort_order_test.dart
 test/sort_test.dart
+test/sound_api_test.dart
+test/sound_event_dto_test.dart
+test/sound_response_dto_sound_error_dto_test.dart
+test/sound_response_dto_sound_model_dto_test.dart
