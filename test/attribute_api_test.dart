@@ -11,17 +11,8 @@ void main() {
     //
     // Adds a new attribute to the database. The attribute is created with the given properties.
     //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> add(AttributeModelDTO attributeModelDTO) async
-    test('test add', () async {
-      // TODO
-    });
-
-    // Delete an attribute by ID
-    //
-    // Deletes the attribute with the given ID.
-    //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> delete(String id) async
-    test('test delete', () async {
+    //Future<AttributeModelDTO> addAttribute(AttributeModelDTO1 attributeModelDTO1) async
+    test('test addAttribute', () async {
       // TODO
     });
 
@@ -29,8 +20,17 @@ void main() {
     //
     // Deletes all attributes from the database.
     //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> deleteAll() async
-    test('test deleteAll', () async {
+    //Future<AttributeModelDTO> deleteAllAttributes() async
+    test('test deleteAllAttributes', () async {
+      // TODO
+    });
+
+    // Delete an attribute by ID
+    //
+    // Deletes the attribute with the given ID.
+    //
+    //Future<AttributeModelDTO> deleteAttributeById(String id) async
+    test('test deleteAttributeById', () async {
       // TODO
     });
 
@@ -38,26 +38,17 @@ void main() {
     //
     // Gets all attributes from the database.
     //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> getAll(Pageable pageable) async
-    test('test getAll', () async {
+    //Future<AttributeModelDTO> getAllAttributes(Pageable pageable) async
+    test('test getAllAttributes', () async {
       // TODO
     });
 
-    // Get all attributes
-    //
-    // Gets all attributes from the database.
-    //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> getAll1(Pageable pageable) async
-    test('test getAll1', () async {
-      // TODO
-    });
-
-    // Get an attribute by ID
+    // Update an attribute
     //
     // Returns the attribute with the given ID.
     //
-    //Future<AttributeModelResponseDTOAttributeModelDTO> update(AttributeModelDTO attributeModelDTO) async
-    test('test update', () async {
+    //Future<AttributeModelDTO> updateAttribute(AttributeModelDTO2 attributeModelDTO2) async
+    test('test updateAttribute', () async {
       // TODO
     });
 

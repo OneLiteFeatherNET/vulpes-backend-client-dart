@@ -11,15 +11,8 @@ void main() {
     //
     // Adds a new sound event to the database. The sound event is created with the given properties.
     //
-    //Future<SoundResponseDTOSoundModelDTO> add4(SoundEventDTO soundEventDTO) async
-    test('test add4', () async {
-      // TODO
-    });
-
-    // Get all sound file sources by an id
-    //
-    //Future<JsonObject> callGet(String id) async
-    test('test callGet', () async {
+    //Future<SoundModelDTO> addSoundEvent(SoundEventDTO soundEventDTO) async
+    test('test addSoundEvent', () async {
       // TODO
     });
 
@@ -27,8 +20,8 @@ void main() {
     //
     // Deletes all sound events from the database.
     //
-    //Future<SoundResponseDTOSoundModelDTO> deleteAll4() async
-    test('test deleteAll4', () async {
+    //Future<SoundModelDTO> deleteAllSoundEvents() async
+    test('test deleteAllSoundEvents', () async {
       // TODO
     });
 
@@ -36,8 +29,8 @@ void main() {
     //
     // Retrieves all sound events from the database.
     //
-    //Future<SoundResponseDTOSoundModelDTO> getAll8() async
-    test('test getAll8', () async {
+    //Future<SoundModelDTO> getAllSoundEvents() async
+    test('test getAllSoundEvents', () async {
       // TODO
     });
 
@@ -45,8 +38,17 @@ void main() {
     //
     // Retrieves a sound from the database by its ID.
     //
-    //Future<SoundResponseDTOSoundModelDTO> getById3(String id) async
-    test('test getById3', () async {
+    //Future<SoundModelDTO> getSoundById(String id) async
+    test('test getSoundById', () async {
+      // TODO
+    });
+
+    // Get all sound file sources by an id
+    //
+    // Get all sound file sources by a given sound event ID.
+    //
+    //Future<JsonObject> getSoundSourcesById(String id) async
+    test('test getSoundSourcesById', () async {
       // TODO
     });
 
@@ -54,8 +56,8 @@ void main() {
     //
     // Removes a sound event from the database by its ID.
     //
-    //Future<SoundResponseDTOSoundModelDTO> remove3(String id) async
-    test('test remove3', () async {
+    //Future<SoundModelDTO> removeSoundEventById(String id) async
+    test('test removeSoundEventById', () async {
       // TODO
     });
 
@@ -63,8 +65,8 @@ void main() {
     //
     // Updates an existing sound event in the database.
     //
-    //Future<SoundResponseDTOSoundModelDTO> update4(SoundEventDTO soundEventDTO) async
-    test('test update4', () async {
+    //Future<SoundModelDTO> updateSoundEvent(SoundEventDTO soundEventDTO) async
+    test('test updateSoundEvent', () async {
       // TODO
     });
 

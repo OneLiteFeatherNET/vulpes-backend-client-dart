@@ -8,45 +8,45 @@ import 'package:built_value/serializer.dart';
 
 part 'notification_model_dto.g.dart';
 
-/// NotificationModelDTO
+/// Notification Model Data
 ///
 /// Properties:
-/// * [id] - ID of the notification
-/// * [uiName] - Model variableName for the UI
-/// * [variableName] - Name in the UI
-/// * [description] - Description of the notification
-/// * [material] - Material identifier
-/// * [frameType] - Type of frame
-/// * [title] - Title of the notification
+/// * [id] - The id of the model
+/// * [uiName] - Model Name for the UI
+/// * [variableName] - Variable name for the generation
+/// * [description] - Description of the Notification
+/// * [material] - Material type of the Notification
+/// * [frameType] - Frame type of the Notification
+/// * [title] - Title of the Notification
 @BuiltValue()
 abstract class NotificationModelDTO implements Built<NotificationModelDTO, NotificationModelDTOBuilder> {
-  /// ID of the notification
+  /// The id of the model
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  /// Model variableName for the UI
+  /// Model Name for the UI
   @BuiltValueField(wireName: r'uiName')
-  String get uiName;
+  String? get uiName;
 
-  /// Name in the UI
+  /// Variable name for the generation
   @BuiltValueField(wireName: r'variableName')
-  String get variableName;
+  String? get variableName;
 
-  /// Description of the notification
+  /// Description of the Notification
   @BuiltValueField(wireName: r'description')
-  String get description;
+  String? get description;
 
-  /// Material identifier
+  /// Material type of the Notification
   @BuiltValueField(wireName: r'material')
-  String get material;
+  String? get material;
 
-  /// Type of frame
+  /// Frame type of the Notification
   @BuiltValueField(wireName: r'frameType')
-  String get frameType;
+  String? get frameType;
 
-  /// Title of the notification
+  /// Title of the Notification
   @BuiltValueField(wireName: r'title')
-  String get title;
+  String? get title;
 
   NotificationModelDTO._();
 
@@ -78,36 +78,48 @@ class _$NotificationModelDTOSerializer implements PrimitiveSerializer<Notificati
         specifiedType: const FullType(String),
       );
     }
-    yield r'uiName';
-    yield serializers.serialize(
-      object.uiName,
-      specifiedType: const FullType(String),
-    );
-    yield r'variableName';
-    yield serializers.serialize(
-      object.variableName,
-      specifiedType: const FullType(String),
-    );
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
-    yield r'material';
-    yield serializers.serialize(
-      object.material,
-      specifiedType: const FullType(String),
-    );
-    yield r'frameType';
-    yield serializers.serialize(
-      object.frameType,
-      specifiedType: const FullType(String),
-    );
-    yield r'title';
-    yield serializers.serialize(
-      object.title,
-      specifiedType: const FullType(String),
-    );
+    if (object.uiName != null) {
+      yield r'uiName';
+      yield serializers.serialize(
+        object.uiName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.variableName != null) {
+      yield r'variableName';
+      yield serializers.serialize(
+        object.variableName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.material != null) {
+      yield r'material';
+      yield serializers.serialize(
+        object.material,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.frameType != null) {
+      yield r'frameType';
+      yield serializers.serialize(
+        object.frameType,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.title != null) {
+      yield r'title';
+      yield serializers.serialize(
+        object.title,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

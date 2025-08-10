@@ -11,8 +11,8 @@ void main() {
     //
     // Adds a new item to the database. The item is created with the given properties.
     //
-    //Future<ItemModelDTO> add2(ItemModelDTO itemModelDTO) async
-    test('test add2', () async {
+    //Future<ItemModelDTO> addItem(ItemModelDTO itemModelDTO) async
+    test('test addItem', () async {
       // TODO
     });
 
@@ -20,8 +20,8 @@ void main() {
     //
     // Deletes all items from the database.
     //
-    //Future<ItemModelResponseDTOItemModelDTO> deleteAll2() async
-    test('test deleteAll2', () async {
+    //Future<ItemModelDTO4> deleteAll() async
+    test('test deleteAll', () async {
       // TODO
     });
 
@@ -29,26 +29,8 @@ void main() {
     //
     // Retrieves all items from the database.
     //
-    //Future<ItemModelResponseDTOItemModelDTO> getAll4(Pageable pageable) async
-    test('test getAll4', () async {
-      // TODO
-    });
-
-    // Get all items
-    //
-    // Retrieves all items from the database.
-    //
-    //Future<ItemModelResponseDTOItemModelDTO> getAll5(Pageable pageable) async
-    test('test getAll5', () async {
-      // TODO
-    });
-
-    // Get an item by ID
-    //
-    // Retrieves an item from the database by its ID.
-    //
-    //Future<ItemModelResponseDTOItemModelDTO> getById1(String id) async
-    test('test getById1', () async {
+    //Future<ItemModelDTO3> getAllItems(Pageable pageable) async
+    test('test getAllItems', () async {
       // TODO
     });
 
@@ -56,7 +38,7 @@ void main() {
     //
     // Retrieves the enchantments of an item by its ID.
     //
-    //Future<ItemModelResponseDTOItemModelEnchantmentResponseDTO> getEnchantmentsById(String id) async
+    //Future<ItemModelEnchantmentDTO> getEnchantmentsById(String id) async
     test('test getEnchantmentsById', () async {
       // TODO
     });
@@ -65,8 +47,17 @@ void main() {
     //
     // Retrieves all flags of an item by its ID.
     //
-    //Future<ItemModelResponseDTOItemModelFlagResponseDTO> getFlagsById(String id) async
+    //Future<ItemModelFlagDTO> getFlagsById(String id) async
     test('test getFlagsById', () async {
+      // TODO
+    });
+
+    // Get an item by ID
+    //
+    // Retrieves an item from the database by its ID.
+    //
+    //Future<ItemModelDTO1> getItemById(String id) async
+    test('test getItemById', () async {
       // TODO
     });
 
@@ -74,7 +65,7 @@ void main() {
     //
     // Retrieves all lore of an item by its ID.
     //
-    //Future<ItemModelResponseDTOItemModelLoreResponseDTO> getLoreById(String id) async
+    //Future<ItemModelLoreDTO> getLoreById(String id) async
     test('test getLoreById', () async {
       // TODO
     });
@@ -83,8 +74,8 @@ void main() {
     //
     // Removes an item from the database by its ID.
     //
-    //Future<ItemModelResponseDTOItemModelDTO> remove1(String id) async
-    test('test remove1', () async {
+    //Future<ItemModelDTO2> removeItemById(String id) async
+    test('test removeItemById', () async {
       // TODO
     });
 
@@ -92,8 +83,8 @@ void main() {
     //
     // Updates an item in the database.
     //
-    //Future<ItemModelResponseDTOItemModelDTO> update2(ItemModelDTO itemModelDTO) async
-    test('test update2', () async {
+    //Future<ItemModelDTO5> update(ItemModelDTO itemModelDTO) async
+    test('test update', () async {
       // TODO
     });
 

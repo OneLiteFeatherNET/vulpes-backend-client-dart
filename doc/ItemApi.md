@@ -9,20 +9,19 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add2**](ItemApi.md#add2) | **POST** /item | Add a new item
-[**deleteAll2**](ItemApi.md#deleteall2) | **DELETE** /item/deleteAll | Delete all items
-[**getAll4**](ItemApi.md#getall4) | **GET** /item/all | Get all items
-[**getAll5**](ItemApi.md#getall5) | **GET** /item/getAll | Get all items
-[**getById1**](ItemApi.md#getbyid1) | **GET** /item/{id} | Get an item by ID
+[**addItem**](ItemApi.md#additem) | **POST** /item | Add a new item
+[**deleteAll**](ItemApi.md#deleteall) | **DELETE** /item/deleteAll | Delete all items
+[**getAllItems**](ItemApi.md#getallitems) | **GET** /item/all | Get all items
 [**getEnchantmentsById**](ItemApi.md#getenchantmentsbyid) | **GET** /item/enchantments/{id} | Get enchantments of an item
 [**getFlagsById**](ItemApi.md#getflagsbyid) | **GET** /item/flags/{id} | Get all flags of an item
+[**getItemById**](ItemApi.md#getitembyid) | **GET** /item/{id} | Get an item by ID
 [**getLoreById**](ItemApi.md#getlorebyid) | **GET** /item/lore/{id} | Get all lore of an item
-[**remove1**](ItemApi.md#remove1) | **DELETE** /item/remove/{id} | Remove an item by ID
-[**update2**](ItemApi.md#update2) | **POST** /item/update | Update an item
+[**removeItemById**](ItemApi.md#removeitembyid) | **DELETE** /item/delete/{id} | Remove an item by ID
+[**update**](ItemApi.md#update) | **POST** /item/update | Update an item
 
 
-# **add2**
-> ItemModelDTO add2(itemModelDTO)
+# **addItem**
+> ItemModelDTO addItem(itemModelDTO)
 
 Add a new item
 
@@ -36,10 +35,10 @@ final api = VulpesBackendClient().getItemApi();
 final ItemModelDTO itemModelDTO = ; // ItemModelDTO | 
 
 try {
-    final response = api.add2(itemModelDTO);
+    final response = api.addItem(itemModelDTO);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ItemApi->add2: $e\n');
+    print('Exception when calling ItemApi->addItem: $e\n');
 }
 ```
 
@@ -64,8 +63,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteAll2**
-> ItemModelResponseDTOItemModelDTO deleteAll2()
+# **deleteAll**
+> ItemModelDTO4 deleteAll()
 
 Delete all items
 
@@ -78,10 +77,10 @@ import 'package:vulpes_backend_client/api.dart';
 final api = VulpesBackendClient().getItemApi();
 
 try {
-    final response = api.deleteAll2();
+    final response = api.deleteAll();
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ItemApi->deleteAll2: $e\n');
+    print('Exception when calling ItemApi->deleteAll: $e\n');
 }
 ```
 
@@ -90,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
+[**ItemModelDTO4**](ItemModelDTO4.md)
 
 ### Authorization
 
@@ -103,8 +102,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAll4**
-> ItemModelResponseDTOItemModelDTO getAll4(pageable)
+# **getAllItems**
+> ItemModelDTO3 getAllItems(pageable)
 
 Get all items
 
@@ -118,10 +117,10 @@ final api = VulpesBackendClient().getItemApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getAll4(pageable);
+    final response = api.getAllItems(pageable);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ItemApi->getAll4: $e\n');
+    print('Exception when calling ItemApi->getAllItems: $e\n');
 }
 ```
 
@@ -133,93 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAll5**
-> ItemModelResponseDTOItemModelDTO getAll5(pageable)
-
-Get all items
-
-Retrieves all items from the database.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getItemApi();
-final Pageable pageable = ; // Pageable | 
-
-try {
-    final response = api.getAll5(pageable);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling ItemApi->getAll5: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)|  | 
-
-### Return type
-
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getById1**
-> ItemModelResponseDTOItemModelDTO getById1(id)
-
-Get an item by ID
-
-Retrieves an item from the database by its ID.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getItemApi();
-final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-
-try {
-    final response = api.getById1(id);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling ItemApi->getById1: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
-
-### Return type
-
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
+[**ItemModelDTO3**](ItemModelDTO3.md)
 
 ### Authorization
 
@@ -233,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEnchantmentsById**
-> ItemModelResponseDTOItemModelEnchantmentResponseDTO getEnchantmentsById(id)
+> ItemModelEnchantmentDTO getEnchantmentsById(id)
 
 Get enchantments of an item
 
@@ -262,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelEnchantmentResponseDTO**](ItemModelResponseDTOItemModelEnchantmentResponseDTO.md)
+[**ItemModelEnchantmentDTO**](ItemModelEnchantmentDTO.md)
 
 ### Authorization
 
@@ -276,7 +189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFlagsById**
-> ItemModelResponseDTOItemModelFlagResponseDTO getFlagsById(id)
+> ItemModelFlagDTO getFlagsById(id)
 
 Get all flags of an item
 
@@ -305,7 +218,50 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelFlagResponseDTO**](ItemModelResponseDTOItemModelFlagResponseDTO.md)
+[**ItemModelFlagDTO**](ItemModelFlagDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getItemById**
+> ItemModelDTO1 getItemById(id)
+
+Get an item by ID
+
+Retrieves an item from the database by its ID.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getItemApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+
+try {
+    final response = api.getItemById(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ItemApi->getItemById: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+[**ItemModelDTO1**](ItemModelDTO1.md)
 
 ### Authorization
 
@@ -319,7 +275,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoreById**
-> ItemModelResponseDTOItemModelLoreResponseDTO getLoreById(id)
+> ItemModelLoreDTO getLoreById(id)
 
 Get all lore of an item
 
@@ -348,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelLoreResponseDTO**](ItemModelResponseDTOItemModelLoreResponseDTO.md)
+[**ItemModelLoreDTO**](ItemModelLoreDTO.md)
 
 ### Authorization
 
@@ -361,8 +317,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **remove1**
-> ItemModelResponseDTOItemModelDTO remove1(id)
+# **removeItemById**
+> ItemModelDTO2 removeItemById(id)
 
 Remove an item by ID
 
@@ -376,10 +332,10 @@ final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final response = api.remove1(id);
+    final response = api.removeItemById(id);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ItemApi->remove1: $e\n');
+    print('Exception when calling ItemApi->removeItemById: $e\n');
 }
 ```
 
@@ -391,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
+[**ItemModelDTO2**](ItemModelDTO2.md)
 
 ### Authorization
 
@@ -404,8 +360,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update2**
-> ItemModelResponseDTOItemModelDTO update2(itemModelDTO)
+# **update**
+> ItemModelDTO5 update(itemModelDTO)
 
 Update an item
 
@@ -419,10 +375,10 @@ final api = VulpesBackendClient().getItemApi();
 final ItemModelDTO itemModelDTO = ; // ItemModelDTO | 
 
 try {
-    final response = api.update2(itemModelDTO);
+    final response = api.update(itemModelDTO);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ItemApi->update2: $e\n');
+    print('Exception when calling ItemApi->update: $e\n');
 }
 ```
 
@@ -434,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelResponseDTOItemModelDTO**](ItemModelResponseDTOItemModelDTO.md)
+[**ItemModelDTO5**](ItemModelDTO5.md)
 
 ### Authorization
 

@@ -11,8 +11,8 @@ void main() {
     //
     // Adds a new notification to the database.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> add3(NotificationModelDTO notificationModelDTO) async
-    test('test add3', () async {
+    //Future<NotificationModelDTO> addNotification(NotificationModelDTO1 notificationModelDTO1) async
+    test('test addNotification', () async {
       // TODO
     });
 
@@ -20,8 +20,8 @@ void main() {
     //
     // Deletes all notifications from the database.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> deleteAll3() async
-    test('test deleteAll3', () async {
+    //Future<NotificationModelDTO> deleteAllNotifications() async
+    test('test deleteAllNotifications', () async {
       // TODO
     });
 
@@ -29,17 +29,8 @@ void main() {
     //
     // Retrieves all notifications from the database.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> getAll6(Pageable pageable) async
-    test('test getAll6', () async {
-      // TODO
-    });
-
-    // Get all notifications
-    //
-    // Retrieves all notifications from the database.
-    //
-    //Future<NotificationModelResponseDTONotificationModelDTO> getAll7(Pageable pageable) async
-    test('test getAll7', () async {
+    //Future<NotificationModelDTO> getAllNotifications(Pageable pageable) async
+    test('test getAllNotifications', () async {
       // TODO
     });
 
@@ -47,8 +38,8 @@ void main() {
     //
     // Retrieves a notification from the database by its ID.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> getById2(String id) async
-    test('test getById2', () async {
+    //Future<NotificationModelDTO> getNotificationById(String id) async
+    test('test getNotificationById', () async {
       // TODO
     });
 
@@ -56,8 +47,8 @@ void main() {
     //
     // Removes a notification from the database by its ID.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> remove2(String id) async
-    test('test remove2', () async {
+    //Future<NotificationModelDTO> removeNotificationById(String id) async
+    test('test removeNotificationById', () async {
       // TODO
     });
 
@@ -65,8 +56,8 @@ void main() {
     //
     // Updates an existing notification in the database.
     //
-    //Future<NotificationModelResponseDTONotificationModelDTO> update3(NotificationModelDTO notificationModelDTO) async
-    test('test update3', () async {
+    //Future<NotificationModelDTO> updateNotification(NotificationModelDTO2 notificationModelDTO2) async
+    test('test updateNotification', () async {
       // TODO
     });
 

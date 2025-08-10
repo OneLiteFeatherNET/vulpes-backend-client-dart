@@ -9,17 +9,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add4**](SoundApi.md#add4) | **POST** /sound | Add a new sound event
-[**callGet**](SoundApi.md#callget) | **GET** /sound/{id}/sources | Get all sound file sources by an id
-[**deleteAll4**](SoundApi.md#deleteall4) | **DELETE** /sound/deleteAll | Delete all sound events
-[**getAll8**](SoundApi.md#getall8) | **GET** /sound/getAll | Get all sound events
-[**getById3**](SoundApi.md#getbyid3) | **GET** /sound/{id} | Get a sound by its ID
-[**remove3**](SoundApi.md#remove3) | **DELETE** /sound/remove/{id} | Remove a sound event by ID
-[**update4**](SoundApi.md#update4) | **POST** /sound/update | Update a sound event
+[**addSoundEvent**](SoundApi.md#addsoundevent) | **POST** /sound | Add a new sound event
+[**deleteAllSoundEvents**](SoundApi.md#deleteallsoundevents) | **DELETE** /sound/delete/all | Delete all sound events
+[**getAllSoundEvents**](SoundApi.md#getallsoundevents) | **GET** /sound/all | Get all sound events
+[**getSoundById**](SoundApi.md#getsoundbyid) | **GET** /sound/{id} | Get a sound by its ID
+[**getSoundSourcesById**](SoundApi.md#getsoundsourcesbyid) | **GET** /sound/{id}/sources | Get all sound file sources by an id
+[**removeSoundEventById**](SoundApi.md#removesoundeventbyid) | **DELETE** /sound/delete/{id} | Remove a sound event by ID
+[**updateSoundEvent**](SoundApi.md#updatesoundevent) | **POST** /sound/update | Update a sound event
 
 
-# **add4**
-> SoundResponseDTOSoundModelDTO add4(soundEventDTO)
+# **addSoundEvent**
+> SoundModelDTO addSoundEvent(soundEventDTO)
 
 Add a new sound event
 
@@ -33,10 +33,10 @@ final api = VulpesBackendClient().getSoundApi();
 final SoundEventDTO soundEventDTO = ; // SoundEventDTO | 
 
 try {
-    final response = api.add4(soundEventDTO);
+    final response = api.addSoundEvent(soundEventDTO);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling SoundApi->add4: $e\n');
+    print('Exception when calling SoundApi->addSoundEvent: $e\n');
 }
 ```
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
+[**SoundModelDTO**](SoundModelDTO.md)
 
 ### Authorization
 
@@ -61,10 +61,90 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **callGet**
-> JsonObject callGet(id)
+# **deleteAllSoundEvents**
+> SoundModelDTO deleteAllSoundEvents()
 
-Get all sound file sources by an id
+Delete all sound events
+
+Deletes all sound events from the database.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getSoundApi();
+
+try {
+    final response = api.deleteAllSoundEvents();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling SoundApi->deleteAllSoundEvents: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SoundModelDTO**](SoundModelDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllSoundEvents**
+> SoundModelDTO getAllSoundEvents()
+
+Get all sound events
+
+Retrieves all sound events from the database.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getSoundApi();
+
+try {
+    final response = api.getAllSoundEvents();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling SoundApi->getAllSoundEvents: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SoundModelDTO**](SoundModelDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSoundById**
+> SoundModelDTO getSoundById(id)
+
+Get a sound by its ID
+
+Retrieves a sound from the database by its ID.
 
 ### Example
 ```dart
@@ -74,10 +154,53 @@ final api = VulpesBackendClient().getSoundApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final response = api.callGet(id);
+    final response = api.getSoundById(id);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling SoundApi->callGet: $e\n');
+    print('Exception when calling SoundApi->getSoundById: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+[**SoundModelDTO**](SoundModelDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getSoundSourcesById**
+> JsonObject getSoundSourcesById(id)
+
+Get all sound file sources by an id
+
+Get all sound file sources by a given sound event ID.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getSoundApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+
+try {
+    final response = api.getSoundSourcesById(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling SoundApi->getSoundSourcesById: $e\n');
 }
 ```
 
@@ -102,129 +225,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteAll4**
-> SoundResponseDTOSoundModelDTO deleteAll4()
-
-Delete all sound events
-
-Deletes all sound events from the database.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getSoundApi();
-
-try {
-    final response = api.deleteAll4();
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling SoundApi->deleteAll4: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAll8**
-> SoundResponseDTOSoundModelDTO getAll8()
-
-Get all sound events
-
-Retrieves all sound events from the database.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getSoundApi();
-
-try {
-    final response = api.getAll8();
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling SoundApi->getAll8: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getById3**
-> SoundResponseDTOSoundModelDTO getById3(id)
-
-Get a sound by its ID
-
-Retrieves a sound from the database by its ID.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getSoundApi();
-final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-
-try {
-    final response = api.getById3(id);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling SoundApi->getById3: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
-
-### Return type
-
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **remove3**
-> SoundResponseDTOSoundModelDTO remove3(id)
+# **removeSoundEventById**
+> SoundModelDTO removeSoundEventById(id)
 
 Remove a sound event by ID
 
@@ -238,10 +240,10 @@ final api = VulpesBackendClient().getSoundApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final response = api.remove3(id);
+    final response = api.removeSoundEventById(id);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling SoundApi->remove3: $e\n');
+    print('Exception when calling SoundApi->removeSoundEventById: $e\n');
 }
 ```
 
@@ -253,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
+[**SoundModelDTO**](SoundModelDTO.md)
 
 ### Authorization
 
@@ -266,8 +268,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update4**
-> SoundResponseDTOSoundModelDTO update4(soundEventDTO)
+# **updateSoundEvent**
+> SoundModelDTO updateSoundEvent(soundEventDTO)
 
 Update a sound event
 
@@ -281,10 +283,10 @@ final api = VulpesBackendClient().getSoundApi();
 final SoundEventDTO soundEventDTO = ; // SoundEventDTO | 
 
 try {
-    final response = api.update4(soundEventDTO);
+    final response = api.updateSoundEvent(soundEventDTO);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling SoundApi->update4: $e\n');
+    print('Exception when calling SoundApi->updateSoundEvent: $e\n');
 }
 ```
 
@@ -296,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SoundResponseDTOSoundModelDTO**](SoundResponseDTOSoundModelDTO.md)
+[**SoundModelDTO**](SoundModelDTO.md)
 
 ### Authorization
 

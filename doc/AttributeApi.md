@@ -9,16 +9,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add**](AttributeApi.md#add) | **POST** /attribute | Add a new attribute
-[**delete**](AttributeApi.md#delete) | **DELETE** /attribute/delete/{id} | Delete an attribute by ID
-[**deleteAll**](AttributeApi.md#deleteall) | **DELETE** /attribute/deleteAll | Delete all attributes
-[**getAll**](AttributeApi.md#getall) | **GET** /attribute/all | Get all attributes
-[**getAll1**](AttributeApi.md#getall1) | **GET** /attribute/getAll | Get all attributes
-[**update**](AttributeApi.md#update) | **POST** /attribute/update | Get an attribute by ID
+[**addAttribute**](AttributeApi.md#addattribute) | **POST** /attribute | Add a new attribute
+[**deleteAllAttributes**](AttributeApi.md#deleteallattributes) | **DELETE** /attribute/delete/all | Delete all attributes
+[**deleteAttributeById**](AttributeApi.md#deleteattributebyid) | **DELETE** /attribute/delete/{id} | Delete an attribute by ID
+[**getAllAttributes**](AttributeApi.md#getallattributes) | **GET** /attribute/all | Get all attributes
+[**updateAttribute**](AttributeApi.md#updateattribute) | **POST** /attribute/update | Update an attribute
 
 
-# **add**
-> AttributeModelResponseDTOAttributeModelDTO add(attributeModelDTO)
+# **addAttribute**
+> AttributeModelDTO addAttribute(attributeModelDTO1)
 
 Add a new attribute
 
@@ -29,13 +28,13 @@ Adds a new attribute to the database. The attribute is created with the given pr
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getAttributeApi();
-final AttributeModelDTO attributeModelDTO = ; // AttributeModelDTO | 
+final AttributeModelDTO1 attributeModelDTO1 = ; // AttributeModelDTO1 | 
 
 try {
-    final response = api.add(attributeModelDTO);
+    final response = api.addAttribute(attributeModelDTO1);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AttributeApi->add: $e\n');
+    print('Exception when calling AttributeApi->addAttribute: $e\n');
 }
 ```
 
@@ -43,11 +42,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributeModelDTO** | [**AttributeModelDTO**](AttributeModelDTO.md)|  | 
+ **attributeModelDTO1** | [**AttributeModelDTO1**](AttributeModelDTO1.md)|  | 
 
 ### Return type
 
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
+[**AttributeModelDTO**](AttributeModelDTO.md)
 
 ### Authorization
 
@@ -60,8 +59,47 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete**
-> AttributeModelResponseDTOAttributeModelDTO delete(id)
+# **deleteAllAttributes**
+> AttributeModelDTO deleteAllAttributes()
+
+Delete all attributes
+
+Deletes all attributes from the database.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getAttributeApi();
+
+try {
+    final response = api.deleteAllAttributes();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AttributeApi->deleteAllAttributes: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AttributeModelDTO**](AttributeModelDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteAttributeById**
+> AttributeModelDTO deleteAttributeById(id)
 
 Delete an attribute by ID
 
@@ -75,10 +113,10 @@ final api = VulpesBackendClient().getAttributeApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final response = api.delete(id);
+    final response = api.deleteAttributeById(id);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AttributeApi->delete: $e\n');
+    print('Exception when calling AttributeApi->deleteAttributeById: $e\n');
 }
 ```
 
@@ -90,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
+[**AttributeModelDTO**](AttributeModelDTO.md)
 
 ### Authorization
 
@@ -103,47 +141,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteAll**
-> AttributeModelResponseDTOAttributeModelDTO deleteAll()
-
-Delete all attributes
-
-Deletes all attributes from the database.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getAttributeApi();
-
-try {
-    final response = api.deleteAll();
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling AttributeApi->deleteAll: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAll**
-> AttributeModelResponseDTOAttributeModelDTO getAll(pageable)
+# **getAllAttributes**
+> AttributeModelDTO getAllAttributes(pageable)
 
 Get all attributes
 
@@ -157,10 +156,10 @@ final api = VulpesBackendClient().getAttributeApi();
 final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getAll(pageable);
+    final response = api.getAllAttributes(pageable);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AttributeApi->getAll: $e\n');
+    print('Exception when calling AttributeApi->getAllAttributes: $e\n');
 }
 ```
 
@@ -172,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
+[**AttributeModelDTO**](AttributeModelDTO.md)
 
 ### Authorization
 
@@ -185,53 +184,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAll1**
-> AttributeModelResponseDTOAttributeModelDTO getAll1(pageable)
+# **updateAttribute**
+> AttributeModelDTO updateAttribute(attributeModelDTO2)
 
-Get all attributes
-
-Gets all attributes from the database.
-
-### Example
-```dart
-import 'package:vulpes_backend_client/api.dart';
-
-final api = VulpesBackendClient().getAttributeApi();
-final Pageable pageable = ; // Pageable | 
-
-try {
-    final response = api.getAll1(pageable);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling AttributeApi->getAll1: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pageable** | [**Pageable**](.md)|  | 
-
-### Return type
-
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update**
-> AttributeModelResponseDTOAttributeModelDTO update(attributeModelDTO)
-
-Get an attribute by ID
+Update an attribute
 
 Returns the attribute with the given ID.
 
@@ -240,13 +196,13 @@ Returns the attribute with the given ID.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getAttributeApi();
-final AttributeModelDTO attributeModelDTO = ; // AttributeModelDTO | 
+final AttributeModelDTO2 attributeModelDTO2 = ; // AttributeModelDTO2 | 
 
 try {
-    final response = api.update(attributeModelDTO);
+    final response = api.updateAttribute(attributeModelDTO2);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AttributeApi->update: $e\n');
+    print('Exception when calling AttributeApi->updateAttribute: $e\n');
 }
 ```
 
@@ -254,11 +210,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributeModelDTO** | [**AttributeModelDTO**](AttributeModelDTO.md)|  | 
+ **attributeModelDTO2** | [**AttributeModelDTO2**](AttributeModelDTO2.md)|  | 
 
 ### Return type
 
-[**AttributeModelResponseDTOAttributeModelDTO**](AttributeModelResponseDTOAttributeModelDTO.md)
+[**AttributeModelDTO**](AttributeModelDTO.md)
 
 ### Authorization
 

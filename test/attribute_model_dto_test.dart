@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AttributeModelDTO, () {
-    // ID of the attribute
+    // UUID of the Attribute Model
     // String id
     test('to test the property `id`', () async {
       // TODO
