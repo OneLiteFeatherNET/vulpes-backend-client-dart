@@ -8,6 +8,7 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_error_dto.dart';
@@ -205,9 +206,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseItemModelDTO>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseItemModelDTO>> getAllItems({ 
+  Future<Response<BuiltList<ResponseItemModelDTO>>> getAllItems({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -242,14 +243,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseItemModelDTO? _responseData;
+    BuiltList<ResponseItemModelDTO>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseItemModelDTO),
-      ) as ResponseItemModelDTO;
+        specifiedType: const FullType(BuiltList, [FullType(ResponseItemModelDTO)]),
+      ) as BuiltList<ResponseItemModelDTO>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -261,7 +262,7 @@ class ItemApi {
       );
     }
 
-    return Response<ResponseItemModelDTO>(
+    return Response<BuiltList<ResponseItemModelDTO>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

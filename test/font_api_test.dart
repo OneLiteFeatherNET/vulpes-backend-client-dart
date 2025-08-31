@@ -38,7 +38,7 @@ void main() {
     //
     // Gets all fonts from the database.
     //
-    //Future<ResponseFontModelDTO> getAllFonts(Pageable pageable) async
+    //Future<BuiltList<ResponseFontModelDTO>> getAllFonts(Pageable pageable) async
     test('test getAllFonts', () async {
       // TODO
     });

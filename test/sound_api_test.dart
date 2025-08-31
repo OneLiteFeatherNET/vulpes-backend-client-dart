@@ -47,7 +47,7 @@ void main() {
     //
     // Retrieves all sound events from the database.
     //
-    //Future<ResponseSoundModelDTO> getAllSoundEvents() async
+    //Future<BuiltList<JsonObject>> getAllSoundEvents() async
     test('test getAllSoundEvents', () async {
       // TODO
     });

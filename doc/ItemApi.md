@@ -103,7 +103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllItems**
-> ResponseItemModelDTO getAllItems(pageable)
+> BuiltList<ResponseItemModelDTO> getAllItems(pageable)
 
 Get all items
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
+[**BuiltList&lt;ResponseItemModelDTO&gt;**](ResponseItemModelDTO.md)
 
 ### Authorization
 

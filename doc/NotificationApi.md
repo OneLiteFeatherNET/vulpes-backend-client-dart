@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllNotifications**
-> ResponseNotificationModelDTO getAllNotifications(pageable)
+> BuiltList<ResponseNotificationModelDTO> getAllNotifications(pageable)
 
 Get all notifications
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
+[**BuiltList&lt;ResponseNotificationModelDTO&gt;**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 

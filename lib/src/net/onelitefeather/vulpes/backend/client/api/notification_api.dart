@@ -8,6 +8,7 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_error_dto.dart';
@@ -202,9 +203,9 @@ class NotificationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseNotificationModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseNotificationModelDTO>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseNotificationModelDTO>> getAllNotifications({ 
+  Future<Response<BuiltList<ResponseNotificationModelDTO>>> getAllNotifications({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -239,14 +240,14 @@ class NotificationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseNotificationModelDTO? _responseData;
+    BuiltList<ResponseNotificationModelDTO>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseNotificationModelDTO),
-      ) as ResponseNotificationModelDTO;
+        specifiedType: const FullType(BuiltList, [FullType(ResponseNotificationModelDTO)]),
+      ) as BuiltList<ResponseNotificationModelDTO>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -258,7 +259,7 @@ class NotificationApi {
       );
     }
 
-    return Response<ResponseNotificationModelDTO>(
+    return Response<BuiltList<ResponseNotificationModelDTO>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

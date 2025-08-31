@@ -29,7 +29,7 @@ void main() {
     //
     // Retrieves all items from the database.
     //
-    //Future<ResponseItemModelDTO> getAllItems(Pageable pageable) async
+    //Future<BuiltList<ResponseItemModelDTO>> getAllItems(Pageable pageable) async
     test('test getAllItems', () async {
       // TODO
     });

@@ -38,7 +38,7 @@ void main() {
     //
     // Gets all attributes from the database.
     //
-    //Future<ResponseAttributeModelDTO> getAllAttributes(Pageable pageable) async
+    //Future<BuiltList<ResponseAttributeModelDTO>> getAllAttributes(Pageable pageable) async
     test('test getAllAttributes', () async {
       // TODO
     });

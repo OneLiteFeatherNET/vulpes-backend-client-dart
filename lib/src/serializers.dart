@@ -72,6 +72,26 @@ part 'serializers.g.dart';
   SoundFileSourceDTO,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseAttributeModelDTO)]),
+        () => ListBuilder<ResponseAttributeModelDTO>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseItemModelDTO)]),
+        () => ListBuilder<ResponseItemModelDTO>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(JsonObject)]),
+        () => ListBuilder<JsonObject>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseFontModelDTO)]),
+        () => ListBuilder<ResponseFontModelDTO>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseNotificationModelDTO)]),
+        () => ListBuilder<ResponseNotificationModelDTO>(),
+      )
       ..add(Sort.serializer)
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())

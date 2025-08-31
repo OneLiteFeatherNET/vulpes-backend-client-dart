@@ -29,7 +29,7 @@ void main() {
     //
     // Retrieves all notifications from the database.
     //
-    //Future<ResponseNotificationModelDTO> getAllNotifications(Pageable pageable) async
+    //Future<BuiltList<ResponseNotificationModelDTO>> getAllNotifications(Pageable pageable) async
     test('test getAllNotifications', () async {
       // TODO
     });

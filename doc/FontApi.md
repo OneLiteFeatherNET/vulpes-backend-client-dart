@@ -144,7 +144,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllFonts**
-> ResponseFontModelDTO getAllFonts(pageable)
+> BuiltList<ResponseFontModelDTO> getAllFonts(pageable)
 
 Get all fonts
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
+[**BuiltList&lt;ResponseFontModelDTO&gt;**](ResponseFontModelDTO.md)
 
 ### Authorization
 

@@ -8,6 +8,7 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_error_dto.dart';
@@ -277,9 +278,9 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseAttributeModelDTO>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseAttributeModelDTO>> getAllAttributes({ 
+  Future<Response<BuiltList<ResponseAttributeModelDTO>>> getAllAttributes({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -314,14 +315,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAttributeModelDTO? _responseData;
+    BuiltList<ResponseAttributeModelDTO>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseAttributeModelDTO),
-      ) as ResponseAttributeModelDTO;
+        specifiedType: const FullType(BuiltList, [FullType(ResponseAttributeModelDTO)]),
+      ) as BuiltList<ResponseAttributeModelDTO>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -333,7 +334,7 @@ class AttributeApi {
       );
     }
 
-    return Response<ResponseAttributeModelDTO>(
+    return Response<BuiltList<ResponseAttributeModelDTO>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

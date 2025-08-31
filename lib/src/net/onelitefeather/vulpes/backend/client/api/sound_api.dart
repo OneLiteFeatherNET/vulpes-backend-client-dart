@@ -8,6 +8,8 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
@@ -397,9 +399,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseSoundModelDTO>> getAllSoundEvents({ 
+  Future<Response<BuiltList<JsonObject>>> getAllSoundEvents({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -428,14 +430,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseSoundModelDTO? _responseData;
+    BuiltList<JsonObject>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseSoundModelDTO),
-      ) as ResponseSoundModelDTO;
+        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      ) as BuiltList<JsonObject>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -447,7 +449,7 @@ class SoundApi {
       );
     }
 
-    return Response<ResponseSoundModelDTO>(
+    return Response<BuiltList<JsonObject>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

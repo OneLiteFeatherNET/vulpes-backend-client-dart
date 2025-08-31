@@ -8,6 +8,7 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
@@ -278,9 +279,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseFontModelDTO>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseFontModelDTO>> getAllFonts({ 
+  Future<Response<BuiltList<ResponseFontModelDTO>>> getAllFonts({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -315,14 +316,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseFontModelDTO? _responseData;
+    BuiltList<ResponseFontModelDTO>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseFontModelDTO),
-      ) as ResponseFontModelDTO;
+        specifiedType: const FullType(BuiltList, [FullType(ResponseFontModelDTO)]),
+      ) as BuiltList<ResponseFontModelDTO>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -334,7 +335,7 @@ class FontApi {
       );
     }
 
-    return Response<ResponseFontModelDTO>(
+    return Response<BuiltList<ResponseFontModelDTO>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

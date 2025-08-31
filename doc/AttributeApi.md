@@ -142,7 +142,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllAttributes**
-> ResponseAttributeModelDTO getAllAttributes(pageable)
+> BuiltList<ResponseAttributeModelDTO> getAllAttributes(pageable)
 
 Get all attributes
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseAttributeModelDTO**](ResponseAttributeModelDTO.md)
+[**BuiltList&lt;ResponseAttributeModelDTO&gt;**](ResponseAttributeModelDTO.md)
 
 ### Authorization
 
