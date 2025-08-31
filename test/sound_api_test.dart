@@ -11,8 +11,17 @@ void main() {
     //
     // Adds a new sound event to the database. The sound event is created with the given properties.
     //
-    //Future<SoundModelDTO> addSoundEvent(SoundEventDTO soundEventDTO) async
+    //Future<ResponseSoundModelDTO> addSoundEvent(SoundEventDTO soundEventDTO) async
     test('test addSoundEvent', () async {
+      // TODO
+    });
+
+    // Create and link a SoundFileSource
+    //
+    // Creates a new SoundFileSource and links it to a SoundEventEntity by its ID.
+    //
+    //Future<ResponseSoundFileSourceDTO> createAndLinkSoundFileSource(String id, SoundFileSourceDTO soundFileSourceDTO) async
+    test('test createAndLinkSoundFileSource', () async {
       // TODO
     });
 
@@ -20,8 +29,17 @@ void main() {
     //
     // Deletes all sound events from the database.
     //
-    //Future<SoundModelDTO> deleteAllSoundEvents() async
+    //Future<ResponseSoundModelDTO> deleteAllSoundEvents() async
     test('test deleteAllSoundEvents', () async {
+      // TODO
+    });
+
+    // Delete a linked SoundFileSource
+    //
+    // Deletes an existing SoundFileSource linked to a SoundEventEntity by its ID.
+    //
+    //Future<ResponseSoundFileSourceDTO> deleteLinkedSoundFileSource(String id, SoundFileSourceDTO soundFileSourceDTO) async
+    test('test deleteLinkedSoundFileSource', () async {
       // TODO
     });
 
@@ -29,7 +47,7 @@ void main() {
     //
     // Retrieves all sound events from the database.
     //
-    //Future<SoundModelDTO> getAllSoundEvents() async
+    //Future<ResponseSoundModelDTO> getAllSoundEvents() async
     test('test getAllSoundEvents', () async {
       // TODO
     });
@@ -38,7 +56,7 @@ void main() {
     //
     // Retrieves a sound from the database by its ID.
     //
-    //Future<SoundModelDTO> getSoundById(String id) async
+    //Future<ResponseSoundModelDTO> getSoundById(String id) async
     test('test getSoundById', () async {
       // TODO
     });
@@ -47,7 +65,7 @@ void main() {
     //
     // Get all sound file sources by a given sound event ID.
     //
-    //Future<JsonObject> getSoundSourcesById(String id) async
+    //Future<ResponseSoundFileSourceDTO> getSoundSourcesById(String id, Pageable pageable) async
     test('test getSoundSourcesById', () async {
       // TODO
     });
@@ -56,8 +74,17 @@ void main() {
     //
     // Removes a sound event from the database by its ID.
     //
-    //Future<SoundModelDTO> removeSoundEventById(String id) async
+    //Future<ResponseSoundModelDTO> removeSoundEventById(String id) async
     test('test removeSoundEventById', () async {
+      // TODO
+    });
+
+    // Update a linked SoundFileSource
+    //
+    // Updates an existing SoundFileSource linked to a SoundEventEntity by its ID.
+    //
+    //Future<ResponseSoundFileSourceDTO> updateLinkedSoundFileSource(String id, SoundFileSourceDTO soundFileSourceDTO) async
+    test('test updateLinkedSoundFileSource', () async {
       // TODO
     });
 
@@ -65,7 +92,7 @@ void main() {
     //
     // Updates an existing sound event in the database.
     //
-    //Future<SoundModelDTO> updateSoundEvent(SoundEventDTO soundEventDTO) async
+    //Future<ResponseSoundModelDTO> updateSoundEvent(SoundEventDTO soundEventDTO) async
     test('test updateSoundEvent', () async {
       // TODO
     });

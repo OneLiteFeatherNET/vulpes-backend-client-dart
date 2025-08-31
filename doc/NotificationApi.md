@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **addNotification**
-> NotificationModelDTO addNotification(notificationModelDTO1)
+> ResponseNotificationModelDTO addNotification(notificationModelDTO)
 
 Add a new notification
 
@@ -29,10 +29,10 @@ Adds a new notification to the database.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getNotificationApi();
-final NotificationModelDTO1 notificationModelDTO1 = ; // NotificationModelDTO1 | the notification model to be added
+final NotificationModelDTO notificationModelDTO = ; // NotificationModelDTO | the notification model to be added
 
 try {
-    final response = api.addNotification(notificationModelDTO1);
+    final response = api.addNotification(notificationModelDTO);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NotificationApi->addNotification: $e\n');
@@ -43,11 +43,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationModelDTO1** | [**NotificationModelDTO1**](NotificationModelDTO1.md)| the notification model to be added | 
+ **notificationModelDTO** | [**NotificationModelDTO**](NotificationModelDTO.md)| the notification model to be added | 
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAllNotifications**
-> NotificationModelDTO deleteAllNotifications()
+> ResponseNotificationModelDTO deleteAllNotifications()
 
 Delete all notifications
 
@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 
@@ -100,7 +100,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllNotifications**
-> NotificationModelDTO getAllNotifications(pageable)
+> ResponseNotificationModelDTO getAllNotifications(pageable)
 
 Get all notifications
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNotificationById**
-> NotificationModelDTO getNotificationById(id)
+> ResponseNotificationModelDTO getNotificationById(id)
 
 Get a notification by ID
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 
@@ -186,7 +186,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **removeNotificationById**
-> NotificationModelDTO removeNotificationById(id)
+> ResponseNotificationModelDTO removeNotificationById(id)
 
 Remove a notification by ID
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateNotification**
-> NotificationModelDTO updateNotification(notificationModelDTO2)
+> ResponseNotificationModelDTO updateNotification(notificationModelDTO)
 
 Update a notification
 
@@ -240,10 +240,10 @@ Updates an existing notification in the database.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getNotificationApi();
-final NotificationModelDTO2 notificationModelDTO2 = ; // NotificationModelDTO2 | the notification model to update
+final NotificationModelDTO notificationModelDTO = ; // NotificationModelDTO | the notification model to update
 
 try {
-    final response = api.updateNotification(notificationModelDTO2);
+    final response = api.updateNotification(notificationModelDTO);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NotificationApi->updateNotification: $e\n');
@@ -254,11 +254,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **notificationModelDTO2** | [**NotificationModelDTO2**](NotificationModelDTO2.md)| the notification model to update | 
+ **notificationModelDTO** | [**NotificationModelDTO**](NotificationModelDTO.md)| the notification model to update | 
 
 ### Return type
 
-[**NotificationModelDTO**](NotificationModelDTO.md)
+[**ResponseNotificationModelDTO**](ResponseNotificationModelDTO.md)
 
 ### Authorization
 

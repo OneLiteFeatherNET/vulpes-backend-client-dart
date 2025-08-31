@@ -11,7 +11,7 @@ void main() {
     //
     // Adds a new notification to the database.
     //
-    //Future<NotificationModelDTO> addNotification(NotificationModelDTO1 notificationModelDTO1) async
+    //Future<ResponseNotificationModelDTO> addNotification(NotificationModelDTO notificationModelDTO) async
     test('test addNotification', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Deletes all notifications from the database.
     //
-    //Future<NotificationModelDTO> deleteAllNotifications() async
+    //Future<ResponseNotificationModelDTO> deleteAllNotifications() async
     test('test deleteAllNotifications', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Retrieves all notifications from the database.
     //
-    //Future<NotificationModelDTO> getAllNotifications(Pageable pageable) async
+    //Future<ResponseNotificationModelDTO> getAllNotifications(Pageable pageable) async
     test('test getAllNotifications', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Retrieves a notification from the database by its ID.
     //
-    //Future<NotificationModelDTO> getNotificationById(String id) async
+    //Future<ResponseNotificationModelDTO> getNotificationById(String id) async
     test('test getNotificationById', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Removes a notification from the database by its ID.
     //
-    //Future<NotificationModelDTO> removeNotificationById(String id) async
+    //Future<ResponseNotificationModelDTO> removeNotificationById(String id) async
     test('test removeNotificationById', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Updates an existing notification in the database.
     //
-    //Future<NotificationModelDTO> updateNotification(NotificationModelDTO2 notificationModelDTO2) async
+    //Future<ResponseNotificationModelDTO> updateNotification(NotificationModelDTO notificationModelDTO) async
     test('test updateNotification', () async {
       // TODO
     });

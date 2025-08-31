@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:vulpes_backend_client/src/api_util.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_chars_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto2.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_chars_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_error_dto.dart';
 
 class FontApi {
 
@@ -28,7 +27,7 @@ class FontApi {
   /// Adds a new font to the database. The font is created with the given properties.
   ///
   /// Parameters:
-  /// * [fontModelDTO1] 
+  /// * [fontModelDTO] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,10 +35,10 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> addFont({ 
-    required FontModelDTO1 fontModelDTO1,
+  Future<Response<ResponseFontModelDTO>> addFont({ 
+    required FontModelDTO fontModelDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -64,8 +63,8 @@ class FontApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(FontModelDTO1);
-      _bodyData = _serializers.serialize(fontModelDTO1, specifiedType: _type);
+      const _type = FullType(FontModelDTO);
+      _bodyData = _serializers.serialize(fontModelDTO, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -88,14 +87,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -107,7 +106,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -130,9 +129,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> deleteAllFonts({ 
+  Future<Response<ResponseFontModelDTO>> deleteAllFonts({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -161,14 +160,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -180,7 +179,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -204,9 +203,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> deleteFont({ 
+  Future<Response<ResponseFontModelDTO>> deleteFont({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -236,14 +235,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -255,7 +254,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -279,9 +278,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> getAllFonts({ 
+  Future<Response<ResponseFontModelDTO>> getAllFonts({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -316,14 +315,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -335,7 +334,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -359,9 +358,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelCharsDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelCharsDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelCharsDTO>> getCharsById({ 
+  Future<Response<ResponseFontModelCharsDTO>> getCharsById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -391,14 +390,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelCharsDTO? _responseData;
+    ResponseFontModelCharsDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelCharsDTO),
-      ) as FontModelCharsDTO;
+        specifiedType: const FullType(ResponseFontModelCharsDTO),
+      ) as ResponseFontModelCharsDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -410,7 +409,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelCharsDTO>(
+    return Response<ResponseFontModelCharsDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -434,9 +433,9 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> getFontById({ 
+  Future<Response<ResponseFontModelDTO>> getFontById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -466,14 +465,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -485,7 +484,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -501,7 +500,7 @@ class FontApi {
   /// Updates a font in the database.
   ///
   /// Parameters:
-  /// * [fontModelDTO2] 
+  /// * [fontModelDTO] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -509,10 +508,10 @@ class FontApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [FontModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseFontModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FontModelDTO>> updateFont({ 
-    required FontModelDTO2 fontModelDTO2,
+  Future<Response<ResponseFontModelDTO>> updateFont({ 
+    required FontModelDTO fontModelDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -537,8 +536,8 @@ class FontApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(FontModelDTO2);
-      _bodyData = _serializers.serialize(fontModelDTO2, specifiedType: _type);
+      const _type = FullType(FontModelDTO);
+      _bodyData = _serializers.serialize(fontModelDTO, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -561,14 +560,14 @@ class FontApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    FontModelDTO? _responseData;
+    ResponseFontModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(FontModelDTO),
-      ) as FontModelDTO;
+        specifiedType: const FullType(ResponseFontModelDTO),
+      ) as ResponseFontModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -580,7 +579,7 @@ class FontApi {
       );
     }
 
-    return Response<FontModelDTO>(
+    return Response<ResponseFontModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

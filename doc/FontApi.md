@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **addFont**
-> FontModelDTO addFont(fontModelDTO1)
+> ResponseFontModelDTO addFont(fontModelDTO)
 
 Add a new font
 
@@ -30,10 +30,10 @@ Adds a new font to the database. The font is created with the given properties.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getFontApi();
-final FontModelDTO1 fontModelDTO1 = ; // FontModelDTO1 | 
+final FontModelDTO fontModelDTO = ; // FontModelDTO | 
 
 try {
-    final response = api.addFont(fontModelDTO1);
+    final response = api.addFont(fontModelDTO);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FontApi->addFont: $e\n');
@@ -44,11 +44,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fontModelDTO1** | [**FontModelDTO1**](FontModelDTO1.md)|  | 
+ **fontModelDTO** | [**FontModelDTO**](FontModelDTO.md)|  | 
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAllFonts**
-> FontModelDTO deleteAllFonts()
+> ResponseFontModelDTO deleteAllFonts()
 
 Delete all fonts
 
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteFont**
-> FontModelDTO deleteFont(id)
+> ResponseFontModelDTO deleteFont(id)
 
 Remove a font by ID
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 
@@ -144,7 +144,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllFonts**
-> FontModelDTO getAllFonts(pageable)
+> ResponseFontModelDTO getAllFonts(pageable)
 
 Get all fonts
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 
@@ -187,7 +187,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCharsById**
-> FontModelCharsDTO getCharsById(id)
+> ResponseFontModelCharsDTO getCharsById(id)
 
 Get characters by font ID
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FontModelCharsDTO**](FontModelCharsDTO.md)
+[**ResponseFontModelCharsDTO**](ResponseFontModelCharsDTO.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFontById**
-> FontModelDTO getFontById(id)
+> ResponseFontModelDTO getFontById(id)
 
 Get a font by ID
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 
@@ -273,7 +273,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateFont**
-> FontModelDTO updateFont(fontModelDTO2)
+> ResponseFontModelDTO updateFont(fontModelDTO)
 
 Update a font
 
@@ -284,10 +284,10 @@ Updates a font in the database.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getFontApi();
-final FontModelDTO2 fontModelDTO2 = ; // FontModelDTO2 | 
+final FontModelDTO fontModelDTO = ; // FontModelDTO | 
 
 try {
-    final response = api.updateFont(fontModelDTO2);
+    final response = api.updateFont(fontModelDTO);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling FontApi->updateFont: $e\n');
@@ -298,11 +298,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fontModelDTO2** | [**FontModelDTO2**](FontModelDTO2.md)|  | 
+ **fontModelDTO** | [**FontModelDTO**](FontModelDTO.md)|  | 
 
 ### Return type
 
-[**FontModelDTO**](FontModelDTO.md)
+[**ResponseFontModelDTO**](ResponseFontModelDTO.md)
 
 ### Authorization
 

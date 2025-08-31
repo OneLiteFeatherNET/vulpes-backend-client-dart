@@ -11,7 +11,7 @@ void main() {
     //
     // Adds a new font to the database. The font is created with the given properties.
     //
-    //Future<FontModelDTO> addFont(FontModelDTO1 fontModelDTO1) async
+    //Future<ResponseFontModelDTO> addFont(FontModelDTO fontModelDTO) async
     test('test addFont', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Deletes all fonts from the database.
     //
-    //Future<FontModelDTO> deleteAllFonts() async
+    //Future<ResponseFontModelDTO> deleteAllFonts() async
     test('test deleteAllFonts', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Removes a font by ID from the database.
     //
-    //Future<FontModelDTO> deleteFont(String id) async
+    //Future<ResponseFontModelDTO> deleteFont(String id) async
     test('test deleteFont', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Gets all fonts from the database.
     //
-    //Future<FontModelDTO> getAllFonts(Pageable pageable) async
+    //Future<ResponseFontModelDTO> getAllFonts(Pageable pageable) async
     test('test getAllFonts', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Gets the characters of a font by its ID from the database.
     //
-    //Future<FontModelCharsDTO> getCharsById(String id) async
+    //Future<ResponseFontModelCharsDTO> getCharsById(String id) async
     test('test getCharsById', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Gets a font by ID from the database.
     //
-    //Future<FontModelDTO> getFontById(String id) async
+    //Future<ResponseFontModelDTO> getFontById(String id) async
     test('test getFontById', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Updates a font in the database.
     //
-    //Future<FontModelDTO> updateFont(FontModelDTO2 fontModelDTO2) async
+    //Future<ResponseFontModelDTO> updateFont(FontModelDTO fontModelDTO) async
     test('test updateFont', () async {
       // TODO
     });

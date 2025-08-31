@@ -10,16 +10,12 @@ import 'package:dio/dio.dart';
 
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto2.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto3.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto4.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto5.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_enchantment_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_flag_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_lore_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_response_dto_item_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
 
 class ItemApi {
 
@@ -135,9 +131,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelDTO4] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelDTO4>> deleteAll({ 
+  Future<Response<ResponseItemModelDTO>> deleteAll({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -166,14 +162,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelDTO4? _responseData;
+    ResponseItemModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelDTO4),
-      ) as ItemModelDTO4;
+        specifiedType: const FullType(ResponseItemModelDTO),
+      ) as ResponseItemModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -185,7 +181,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelDTO4>(
+    return Response<ResponseItemModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -209,9 +205,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelDTO3] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelDTO3>> getAllItems({ 
+  Future<Response<ResponseItemModelDTO>> getAllItems({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -246,14 +242,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelDTO3? _responseData;
+    ResponseItemModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelDTO3),
-      ) as ItemModelDTO3;
+        specifiedType: const FullType(ResponseItemModelDTO),
+      ) as ResponseItemModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -265,7 +261,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelDTO3>(
+    return Response<ResponseItemModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -289,9 +285,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelEnchantmentDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelEnchantmentDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelEnchantmentDTO>> getEnchantmentsById({ 
+  Future<Response<ResponseItemModelEnchantmentDTO>> getEnchantmentsById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -321,14 +317,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelEnchantmentDTO? _responseData;
+    ResponseItemModelEnchantmentDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelEnchantmentDTO),
-      ) as ItemModelEnchantmentDTO;
+        specifiedType: const FullType(ResponseItemModelEnchantmentDTO),
+      ) as ResponseItemModelEnchantmentDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -340,7 +336,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelEnchantmentDTO>(
+    return Response<ResponseItemModelEnchantmentDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -364,9 +360,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelFlagDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelFlagDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelFlagDTO>> getFlagsById({ 
+  Future<Response<ResponseItemModelFlagDTO>> getFlagsById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -396,14 +392,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelFlagDTO? _responseData;
+    ResponseItemModelFlagDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelFlagDTO),
-      ) as ItemModelFlagDTO;
+        specifiedType: const FullType(ResponseItemModelFlagDTO),
+      ) as ResponseItemModelFlagDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -415,7 +411,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelFlagDTO>(
+    return Response<ResponseItemModelFlagDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -439,9 +435,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelDTO1] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelDTO1>> getItemById({ 
+  Future<Response<ResponseItemModelDTO>> getItemById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -471,14 +467,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelDTO1? _responseData;
+    ResponseItemModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelDTO1),
-      ) as ItemModelDTO1;
+        specifiedType: const FullType(ResponseItemModelDTO),
+      ) as ResponseItemModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -490,7 +486,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelDTO1>(
+    return Response<ResponseItemModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -514,9 +510,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelLoreDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelLoreDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelLoreDTO>> getLoreById({ 
+  Future<Response<ResponseItemModelLoreDTO>> getLoreById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -546,14 +542,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelLoreDTO? _responseData;
+    ResponseItemModelLoreDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelLoreDTO),
-      ) as ItemModelLoreDTO;
+        specifiedType: const FullType(ResponseItemModelLoreDTO),
+      ) as ResponseItemModelLoreDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -565,7 +561,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelLoreDTO>(
+    return Response<ResponseItemModelLoreDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -589,9 +585,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelDTO2] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelDTO2>> removeItemById({ 
+  Future<Response<ResponseItemModelDTO>> removeItemById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -621,14 +617,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelDTO2? _responseData;
+    ResponseItemModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelDTO2),
-      ) as ItemModelDTO2;
+        specifiedType: const FullType(ResponseItemModelDTO),
+      ) as ResponseItemModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -640,7 +636,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelDTO2>(
+    return Response<ResponseItemModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -664,9 +660,9 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemModelDTO5] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseItemModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemModelDTO5>> update({ 
+  Future<Response<ResponseItemModelDTO>> update({ 
     required ItemModelDTO itemModelDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -716,14 +712,14 @@ class ItemApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ItemModelDTO5? _responseData;
+    ResponseItemModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ItemModelDTO5),
-      ) as ItemModelDTO5;
+        specifiedType: const FullType(ResponseItemModelDTO),
+      ) as ResponseItemModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -735,7 +731,7 @@ class ItemApi {
       );
     }
 
-    return Response<ItemModelDTO5>(
+    return Response<ResponseItemModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

@@ -11,7 +11,7 @@ void main() {
     //
     // Adds a new attribute to the database. The attribute is created with the given properties.
     //
-    //Future<AttributeModelDTO> addAttribute(AttributeModelDTO1 attributeModelDTO1) async
+    //Future<ResponseAttributeModelDTO> addAttribute(AttributeModelDTO attributeModelDTO) async
     test('test addAttribute', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Deletes all attributes from the database.
     //
-    //Future<AttributeModelDTO> deleteAllAttributes() async
+    //Future<ResponseAttributeModelDTO> deleteAllAttributes() async
     test('test deleteAllAttributes', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Deletes the attribute with the given ID.
     //
-    //Future<AttributeModelDTO> deleteAttributeById(String id) async
+    //Future<ResponseAttributeModelDTO> deleteAttributeById(String id) async
     test('test deleteAttributeById', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Gets all attributes from the database.
     //
-    //Future<AttributeModelDTO> getAllAttributes(Pageable pageable) async
+    //Future<ResponseAttributeModelDTO> getAllAttributes(Pageable pageable) async
     test('test getAllAttributes', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Returns the attribute with the given ID.
     //
-    //Future<AttributeModelDTO> updateAttribute(AttributeModelDTO2 attributeModelDTO2) async
+    //Future<ResponseAttributeModelDTO> updateAttribute(AttributeModelDTO attributeModelDTO) async
     test('test updateAttribute', () async {
       // TODO
     });

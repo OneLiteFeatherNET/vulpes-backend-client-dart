@@ -8,11 +8,13 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_value/json_object.dart';
 import 'package:vulpes_backend_client/src/api_util.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_file_source_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_file_source_dto.dart';
 
 class SoundApi {
 
@@ -34,9 +36,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> addSoundEvent({ 
+  Future<Response<ResponseSoundModelDTO>> addSoundEvent({ 
     required SoundEventDTO soundEventDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -86,14 +88,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -105,7 +107,104 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Create and link a SoundFileSource
+  /// Creates a new SoundFileSource and links it to a SoundEventEntity by its ID.
+  ///
+  /// Parameters:
+  /// * [id] - the ID of the SoundEventEntity
+  /// * [soundFileSourceDTO] - the DTO containing source data
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundFileSourceDTO] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ResponseSoundFileSourceDTO>> createAndLinkSoundFileSource({ 
+    required String id,
+    required SoundFileSourceDTO soundFileSourceDTO,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/sound/{id}/sources'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(SoundFileSourceDTO);
+      _bodyData = _serializers.serialize(soundFileSourceDTO, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseSoundFileSourceDTO? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseSoundFileSourceDTO),
+      ) as ResponseSoundFileSourceDTO;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ResponseSoundFileSourceDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -128,9 +227,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> deleteAllSoundEvents({ 
+  Future<Response<ResponseSoundModelDTO>> deleteAllSoundEvents({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -159,14 +258,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -178,7 +277,104 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Delete a linked SoundFileSource
+  /// Deletes an existing SoundFileSource linked to a SoundEventEntity by its ID.
+  ///
+  /// Parameters:
+  /// * [id] - the ID of the SoundEventEntity
+  /// * [soundFileSourceDTO] - the DTO containing source data to delete
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundFileSourceDTO] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ResponseSoundFileSourceDTO>> deleteLinkedSoundFileSource({ 
+    required String id,
+    required SoundFileSourceDTO soundFileSourceDTO,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/sound/{id}/sources/delete'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(SoundFileSourceDTO);
+      _bodyData = _serializers.serialize(soundFileSourceDTO, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseSoundFileSourceDTO? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseSoundFileSourceDTO),
+      ) as ResponseSoundFileSourceDTO;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ResponseSoundFileSourceDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -201,9 +397,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> getAllSoundEvents({ 
+  Future<Response<ResponseSoundModelDTO>> getAllSoundEvents({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -232,14 +428,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -251,7 +447,7 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -275,9 +471,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> getSoundById({ 
+  Future<Response<ResponseSoundModelDTO>> getSoundById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -307,14 +503,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -326,7 +522,7 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -343,6 +539,7 @@ class SoundApi {
   ///
   /// Parameters:
   /// * [id] 
+  /// * [pageable] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -350,10 +547,11 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundFileSourceDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> getSoundSourcesById({ 
+  Future<Response<ResponseSoundFileSourceDTO>> getSoundSourcesById({ 
     required String id,
+    required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -374,22 +572,27 @@ class SoundApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    JsonObject? _responseData;
+    ResponseSoundFileSourceDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(JsonObject),
-      ) as JsonObject;
+        specifiedType: const FullType(ResponseSoundFileSourceDTO),
+      ) as ResponseSoundFileSourceDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -401,7 +604,7 @@ class SoundApi {
       );
     }
 
-    return Response<JsonObject>(
+    return Response<ResponseSoundFileSourceDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -425,9 +628,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> removeSoundEventById({ 
+  Future<Response<ResponseSoundModelDTO>> removeSoundEventById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -457,14 +660,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -476,7 +679,104 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update a linked SoundFileSource
+  /// Updates an existing SoundFileSource linked to a SoundEventEntity by its ID.
+  ///
+  /// Parameters:
+  /// * [id] - the ID of the SoundEventEntity
+  /// * [soundFileSourceDTO] - the DTO containing updated source data
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundFileSourceDTO] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ResponseSoundFileSourceDTO>> updateLinkedSoundFileSource({ 
+    required String id,
+    required SoundFileSourceDTO soundFileSourceDTO,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/sound/{id}/sources/update'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(SoundFileSourceDTO);
+      _bodyData = _serializers.serialize(soundFileSourceDTO, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ResponseSoundFileSourceDTO? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseSoundFileSourceDTO),
+      ) as ResponseSoundFileSourceDTO;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ResponseSoundFileSourceDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -500,9 +800,9 @@ class SoundApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [SoundModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseSoundModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SoundModelDTO>> updateSoundEvent({ 
+  Future<Response<ResponseSoundModelDTO>> updateSoundEvent({ 
     required SoundEventDTO soundEventDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -552,14 +852,14 @@ class SoundApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SoundModelDTO? _responseData;
+    ResponseSoundModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(SoundModelDTO),
-      ) as SoundModelDTO;
+        specifiedType: const FullType(ResponseSoundModelDTO),
+      ) as ResponseSoundModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -571,7 +871,7 @@ class SoundApi {
       );
     }
 
-    return Response<SoundModelDTO>(
+    return Response<ResponseSoundModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

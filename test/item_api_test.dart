@@ -20,7 +20,7 @@ void main() {
     //
     // Deletes all items from the database.
     //
-    //Future<ItemModelDTO4> deleteAll() async
+    //Future<ResponseItemModelDTO> deleteAll() async
     test('test deleteAll', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Retrieves all items from the database.
     //
-    //Future<ItemModelDTO3> getAllItems(Pageable pageable) async
+    //Future<ResponseItemModelDTO> getAllItems(Pageable pageable) async
     test('test getAllItems', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Retrieves the enchantments of an item by its ID.
     //
-    //Future<ItemModelEnchantmentDTO> getEnchantmentsById(String id) async
+    //Future<ResponseItemModelEnchantmentDTO> getEnchantmentsById(String id) async
     test('test getEnchantmentsById', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Retrieves all flags of an item by its ID.
     //
-    //Future<ItemModelFlagDTO> getFlagsById(String id) async
+    //Future<ResponseItemModelFlagDTO> getFlagsById(String id) async
     test('test getFlagsById', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Retrieves an item from the database by its ID.
     //
-    //Future<ItemModelDTO1> getItemById(String id) async
+    //Future<ResponseItemModelDTO> getItemById(String id) async
     test('test getItemById', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Retrieves all lore of an item by its ID.
     //
-    //Future<ItemModelLoreDTO> getLoreById(String id) async
+    //Future<ResponseItemModelLoreDTO> getLoreById(String id) async
     test('test getLoreById', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Removes an item from the database by its ID.
     //
-    //Future<ItemModelDTO2> removeItemById(String id) async
+    //Future<ResponseItemModelDTO> removeItemById(String id) async
     test('test removeItemById', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Updates an item in the database.
     //
-    //Future<ItemModelDTO5> update(ItemModelDTO itemModelDTO) async
+    //Future<ResponseItemModelDTO> update(ItemModelDTO itemModelDTO) async
     test('test update', () async {
       // TODO
     });

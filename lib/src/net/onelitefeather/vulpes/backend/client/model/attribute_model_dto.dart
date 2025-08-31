@@ -8,35 +8,35 @@ import 'package:built_value/serializer.dart';
 
 part 'attribute_model_dto.g.dart';
 
-/// Attribute Model Data
+/// AttributeModelDTO
 ///
 /// Properties:
-/// * [id] - UUID of the Attribute Model
+/// * [id] - ID of the attribute
 /// * [uiName] - The name for the ui
 /// * [variableName] - The name which represents the variable after the generation
 /// * [defaultValue] - Default value of the attribute
 /// * [maximumValue] - Maximum value of the attribute
 @BuiltValue()
 abstract class AttributeModelDTO implements Built<AttributeModelDTO, AttributeModelDTOBuilder> {
-  /// UUID of the Attribute Model
+  /// ID of the attribute
   @BuiltValueField(wireName: r'id')
   String? get id;
 
   /// The name for the ui
   @BuiltValueField(wireName: r'uiName')
-  String? get uiName;
+  String get uiName;
 
   /// The name which represents the variable after the generation
   @BuiltValueField(wireName: r'variableName')
-  String? get variableName;
+  String get variableName;
 
   /// Default value of the attribute
   @BuiltValueField(wireName: r'defaultValue')
-  double? get defaultValue;
+  double get defaultValue;
 
   /// Maximum value of the attribute
   @BuiltValueField(wireName: r'maximumValue')
-  double? get maximumValue;
+  double get maximumValue;
 
   AttributeModelDTO._();
 
@@ -68,34 +68,26 @@ class _$AttributeModelDTOSerializer implements PrimitiveSerializer<AttributeMode
         specifiedType: const FullType(String),
       );
     }
-    if (object.uiName != null) {
-      yield r'uiName';
-      yield serializers.serialize(
-        object.uiName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.variableName != null) {
-      yield r'variableName';
-      yield serializers.serialize(
-        object.variableName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.defaultValue != null) {
-      yield r'defaultValue';
-      yield serializers.serialize(
-        object.defaultValue,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.maximumValue != null) {
-      yield r'maximumValue';
-      yield serializers.serialize(
-        object.maximumValue,
-        specifiedType: const FullType(double),
-      );
-    }
+    yield r'uiName';
+    yield serializers.serialize(
+      object.uiName,
+      specifiedType: const FullType(String),
+    );
+    yield r'variableName';
+    yield serializers.serialize(
+      object.variableName,
+      specifiedType: const FullType(String),
+    );
+    yield r'defaultValue';
+    yield serializers.serialize(
+      object.defaultValue,
+      specifiedType: const FullType(double),
+    );
+    yield r'maximumValue';
+    yield serializers.serialize(
+      object.maximumValue,
+      specifiedType: const FullType(double),
+    );
   }
 
   @override
