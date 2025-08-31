@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAll**
-> ItemModelDTO4 deleteAll()
+> ResponseItemModelDTO deleteAll()
 
 Delete all items
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ItemModelDTO4**](ItemModelDTO4.md)
+[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllItems**
-> ItemModelDTO3 getAllItems(pageable)
+> ResponseItemModelDTO getAllItems(pageable)
 
 Get all items
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelDTO3**](ItemModelDTO3.md)
+[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEnchantmentsById**
-> ItemModelEnchantmentDTO getEnchantmentsById(id)
+> ResponseItemModelEnchantmentDTO getEnchantmentsById(id)
 
 Get enchantments of an item
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelEnchantmentDTO**](ItemModelEnchantmentDTO.md)
+[**ResponseItemModelEnchantmentDTO**](ResponseItemModelEnchantmentDTO.md)
 
 ### Authorization
 
@@ -189,7 +189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFlagsById**
-> ItemModelFlagDTO getFlagsById(id)
+> ResponseItemModelFlagDTO getFlagsById(id)
 
 Get all flags of an item
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelFlagDTO**](ItemModelFlagDTO.md)
+[**ResponseItemModelFlagDTO**](ResponseItemModelFlagDTO.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItemById**
-> ItemModelDTO1 getItemById(id)
+> ResponseItemModelDTO getItemById(id)
 
 Get an item by ID
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelDTO1**](ItemModelDTO1.md)
+[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoreById**
-> ItemModelLoreDTO getLoreById(id)
+> ResponseItemModelLoreDTO getLoreById(id)
 
 Get all lore of an item
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelLoreDTO**](ItemModelLoreDTO.md)
+[**ResponseItemModelLoreDTO**](ResponseItemModelLoreDTO.md)
 
 ### Authorization
 
@@ -318,7 +318,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **removeItemById**
-> ItemModelDTO2 removeItemById(id)
+> ResponseItemModelDTO removeItemById(id)
 
 Remove an item by ID
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelDTO2**](ItemModelDTO2.md)
+[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
 
 ### Authorization
 
@@ -361,7 +361,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> ItemModelDTO5 update(itemModelDTO)
+> ResponseItemModelDTO update(itemModelDTO)
 
 Update an item
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemModelDTO5**](ItemModelDTO5.md)
+[**ResponseItemModelDTO**](ResponseItemModelDTO.md)
 
 ### Authorization
 

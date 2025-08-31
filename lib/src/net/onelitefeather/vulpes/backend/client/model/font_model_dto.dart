@@ -9,58 +9,58 @@ import 'package:built_value/serializer.dart';
 
 part 'font_model_dto.g.dart';
 
-/// Font model data
+/// FontModelDTO
 ///
 /// Properties:
-/// * [id] - The id of the model
-/// * [uiName] - Model Name for the UI
-/// * [variableName] - Variable name for the generation
-/// * [provider] - Example comment
-/// * [mapper] - Example comment
-/// * [texturePath] - Example comment
-/// * [comment] - Example comment
-/// * [ascent] - Example comment
-/// * [height] - Example comment
-/// * [chars] - Example comment
+/// * [id] - ID of the mode
+/// * [uiName] - Model Name for the ui
+/// * [variableName] - Name in the UI
+/// * [provider] - Which provider should be used
+/// * [mapper] - Internal mapper variable
+/// * [texturePath] - The path to the texture
+/// * [comment] - The comment
+/// * [ascent] - The ascent property
+/// * [height] - The height property
+/// * [chars] - The chars which are overwritten
 @BuiltValue()
 abstract class FontModelDTO implements Built<FontModelDTO, FontModelDTOBuilder> {
-  /// The id of the model
+  /// ID of the mode
   @BuiltValueField(wireName: r'id')
-  String get id;
+  String? get id;
 
-  /// Model Name for the UI
+  /// Model Name for the ui
   @BuiltValueField(wireName: r'uiName')
   String get uiName;
 
-  /// Variable name for the generation
+  /// Name in the UI
   @BuiltValueField(wireName: r'variableName')
   String get variableName;
 
-  /// Example comment
+  /// Which provider should be used
   @BuiltValueField(wireName: r'provider')
   String get provider;
 
-  /// Example comment
+  /// Internal mapper variable
   @BuiltValueField(wireName: r'mapper')
   String get mapper;
 
-  /// Example comment
+  /// The path to the texture
   @BuiltValueField(wireName: r'texturePath')
   String get texturePath;
 
-  /// Example comment
+  /// The comment
   @BuiltValueField(wireName: r'comment')
   String get comment;
 
-  /// Example comment
+  /// The ascent property
   @BuiltValueField(wireName: r'ascent')
   int get ascent;
 
-  /// Example comment
+  /// The height property
   @BuiltValueField(wireName: r'height')
   int get height;
 
-  /// Example comment
+  /// The chars which are overwritten
   @BuiltValueField(wireName: r'chars')
   BuiltList<String>? get chars;
 
@@ -87,11 +87,13 @@ class _$FontModelDTOSerializer implements PrimitiveSerializer<FontModelDTO> {
     FontModelDTO object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
+    if (object.id != null) {
+      yield r'id';
+      yield serializers.serialize(
+        object.id,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'uiName';
     yield serializers.serialize(
       object.uiName,

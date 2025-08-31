@@ -10,10 +10,9 @@ import 'package:dio/dio.dart';
 
 import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto2.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_attribute_model_dto.dart';
 
 class AttributeApi {
 
@@ -27,7 +26,7 @@ class AttributeApi {
   /// Adds a new attribute to the database. The attribute is created with the given properties.
   ///
   /// Parameters:
-  /// * [attributeModelDTO1] 
+  /// * [attributeModelDTO] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,10 +34,10 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AttributeModelDTO>> addAttribute({ 
-    required AttributeModelDTO1 attributeModelDTO1,
+  Future<Response<ResponseAttributeModelDTO>> addAttribute({ 
+    required AttributeModelDTO attributeModelDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -63,8 +62,8 @@ class AttributeApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AttributeModelDTO1);
-      _bodyData = _serializers.serialize(attributeModelDTO1, specifiedType: _type);
+      const _type = FullType(AttributeModelDTO);
+      _bodyData = _serializers.serialize(attributeModelDTO, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -87,14 +86,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AttributeModelDTO? _responseData;
+    ResponseAttributeModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AttributeModelDTO),
-      ) as AttributeModelDTO;
+        specifiedType: const FullType(ResponseAttributeModelDTO),
+      ) as ResponseAttributeModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -106,7 +105,7 @@ class AttributeApi {
       );
     }
 
-    return Response<AttributeModelDTO>(
+    return Response<ResponseAttributeModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -129,9 +128,9 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AttributeModelDTO>> deleteAllAttributes({ 
+  Future<Response<ResponseAttributeModelDTO>> deleteAllAttributes({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -160,14 +159,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AttributeModelDTO? _responseData;
+    ResponseAttributeModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AttributeModelDTO),
-      ) as AttributeModelDTO;
+        specifiedType: const FullType(ResponseAttributeModelDTO),
+      ) as ResponseAttributeModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -179,7 +178,7 @@ class AttributeApi {
       );
     }
 
-    return Response<AttributeModelDTO>(
+    return Response<ResponseAttributeModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -203,9 +202,9 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AttributeModelDTO>> deleteAttributeById({ 
+  Future<Response<ResponseAttributeModelDTO>> deleteAttributeById({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -235,14 +234,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AttributeModelDTO? _responseData;
+    ResponseAttributeModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AttributeModelDTO),
-      ) as AttributeModelDTO;
+        specifiedType: const FullType(ResponseAttributeModelDTO),
+      ) as ResponseAttributeModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -254,7 +253,7 @@ class AttributeApi {
       );
     }
 
-    return Response<AttributeModelDTO>(
+    return Response<ResponseAttributeModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -278,9 +277,9 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AttributeModelDTO>> getAllAttributes({ 
+  Future<Response<ResponseAttributeModelDTO>> getAllAttributes({ 
     required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -315,14 +314,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AttributeModelDTO? _responseData;
+    ResponseAttributeModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AttributeModelDTO),
-      ) as AttributeModelDTO;
+        specifiedType: const FullType(ResponseAttributeModelDTO),
+      ) as ResponseAttributeModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -334,7 +333,7 @@ class AttributeApi {
       );
     }
 
-    return Response<AttributeModelDTO>(
+    return Response<ResponseAttributeModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -350,7 +349,7 @@ class AttributeApi {
   /// Returns the attribute with the given ID.
   ///
   /// Parameters:
-  /// * [attributeModelDTO2] 
+  /// * [attributeModelDTO] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -358,10 +357,10 @@ class AttributeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AttributeModelDTO] as data
+  /// Returns a [Future] containing a [Response] with a [ResponseAttributeModelDTO] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AttributeModelDTO>> updateAttribute({ 
-    required AttributeModelDTO2 attributeModelDTO2,
+  Future<Response<ResponseAttributeModelDTO>> updateAttribute({ 
+    required AttributeModelDTO attributeModelDTO,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -386,8 +385,8 @@ class AttributeApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AttributeModelDTO2);
-      _bodyData = _serializers.serialize(attributeModelDTO2, specifiedType: _type);
+      const _type = FullType(AttributeModelDTO);
+      _bodyData = _serializers.serialize(attributeModelDTO, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -410,14 +409,14 @@ class AttributeApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AttributeModelDTO? _responseData;
+    ResponseAttributeModelDTO? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(AttributeModelDTO),
-      ) as AttributeModelDTO;
+        specifiedType: const FullType(ResponseAttributeModelDTO),
+      ) as ResponseAttributeModelDTO;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -429,7 +428,7 @@ class AttributeApi {
       );
     }
 
-    return Response<AttributeModelDTO>(
+    return Response<ResponseAttributeModelDTO>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

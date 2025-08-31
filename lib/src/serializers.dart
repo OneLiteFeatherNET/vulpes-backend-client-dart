@@ -15,71 +15,61 @@ import 'package:vulpes_backend_client/src/date_serializer.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/date.dart';
 
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto2.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_chars_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto2.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto2.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto3.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto4.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto5.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_enchantment_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_flag_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_lore_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_response_dto_item_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_dto1.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_dto2.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_response_dto_notification_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable_mode.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_attribute_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_chars_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_notification_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_file_source_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order_direction.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_file_source_dto.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
   AttributeModelDTO,
-  AttributeModelDTO1,
-  AttributeModelDTO2,
   AttributeModelErrorDTO,
-  FontModelCharsDTO,
   FontModelDTO,
-  FontModelDTO1,
-  FontModelDTO2,
-  FontModelErrorDTO,
   ItemModelDTO,
-  ItemModelDTO1,
-  ItemModelDTO2,
-  ItemModelDTO3,
-  ItemModelDTO4,
-  ItemModelDTO5,
-  ItemModelEnchantmentDTO,
-  ItemModelFlagDTO,
-  ItemModelLoreDTO,
-  ItemModelResponseDTOItemModelErrorDTO,
+  ItemModelErrorDTO,
   NotificationModelDTO,
-  NotificationModelDTO1,
-  NotificationModelDTO2,
-  NotificationModelResponseDTONotificationModelErrorDTO,
+  NotificationModelErrorDTO,
   Pageable,
   PageableMode,
+  ResponseAttributeModelDTO,
+  ResponseFontModelCharsDTO,
+  ResponseFontModelDTO,
+  ResponseFontModelErrorDTO,
+  ResponseItemModelDTO,
+  ResponseItemModelEnchantmentDTO,
+  ResponseItemModelFlagDTO,
+  ResponseItemModelLoreDTO,
+  ResponseNotificationModelDTO,
+  ResponseSoundErrorDTO,
+  ResponseSoundFileSourceDTO,
+  ResponseSoundModelDTO,
   Sort,$Sort,
   SortOrder,
   SortOrderDirection,
-  SoundErrorDTO,
   SoundEventDTO,
-  SoundModelDTO,
+  SoundFileSourceDTO,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(Sort.serializer)

@@ -8,45 +8,45 @@ import 'package:built_value/serializer.dart';
 
 part 'notification_model_dto.g.dart';
 
-/// Notification Model Data
+/// NotificationModelDTO
 ///
 /// Properties:
-/// * [id] - The id of the model
-/// * [uiName] - Model Name for the UI
-/// * [variableName] - Variable name for the generation
-/// * [description] - Description of the Notification
-/// * [material] - Material type of the Notification
-/// * [frameType] - Frame type of the Notification
-/// * [title] - Title of the Notification
+/// * [id] - ID of the notification
+/// * [uiName] - Model variableName for the UI
+/// * [variableName] - Name in the UI
+/// * [description] - Description of the notification
+/// * [material] - Material identifier
+/// * [frameType] - Type of frame
+/// * [title] - Title of the notification
 @BuiltValue()
 abstract class NotificationModelDTO implements Built<NotificationModelDTO, NotificationModelDTOBuilder> {
-  /// The id of the model
+  /// ID of the notification
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  /// Model Name for the UI
+  /// Model variableName for the UI
   @BuiltValueField(wireName: r'uiName')
-  String? get uiName;
+  String get uiName;
 
-  /// Variable name for the generation
+  /// Name in the UI
   @BuiltValueField(wireName: r'variableName')
-  String? get variableName;
+  String get variableName;
 
-  /// Description of the Notification
+  /// Description of the notification
   @BuiltValueField(wireName: r'description')
-  String? get description;
+  String get description;
 
-  /// Material type of the Notification
+  /// Material identifier
   @BuiltValueField(wireName: r'material')
-  String? get material;
+  String get material;
 
-  /// Frame type of the Notification
+  /// Type of frame
   @BuiltValueField(wireName: r'frameType')
-  String? get frameType;
+  String get frameType;
 
-  /// Title of the Notification
+  /// Title of the notification
   @BuiltValueField(wireName: r'title')
-  String? get title;
+  String get title;
 
   NotificationModelDTO._();
 
@@ -78,48 +78,36 @@ class _$NotificationModelDTOSerializer implements PrimitiveSerializer<Notificati
         specifiedType: const FullType(String),
       );
     }
-    if (object.uiName != null) {
-      yield r'uiName';
-      yield serializers.serialize(
-        object.uiName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.variableName != null) {
-      yield r'variableName';
-      yield serializers.serialize(
-        object.variableName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.material != null) {
-      yield r'material';
-      yield serializers.serialize(
-        object.material,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.frameType != null) {
-      yield r'frameType';
-      yield serializers.serialize(
-        object.frameType,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.title != null) {
-      yield r'title';
-      yield serializers.serialize(
-        object.title,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'uiName';
+    yield serializers.serialize(
+      object.uiName,
+      specifiedType: const FullType(String),
+    );
+    yield r'variableName';
+    yield serializers.serialize(
+      object.variableName,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
+    yield r'material';
+    yield serializers.serialize(
+      object.material,
+      specifiedType: const FullType(String),
+    );
+    yield r'frameType';
+    yield serializers.serialize(
+      object.frameType,
+      specifiedType: const FullType(String),
+    );
+    yield r'title';
+    yield serializers.serialize(
+      object.title,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

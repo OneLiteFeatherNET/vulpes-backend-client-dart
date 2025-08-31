@@ -7,43 +7,43 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(NotificationModelDTO, () {
-    // The id of the model
+    // ID of the notification
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // Model Name for the UI
+    // Model variableName for the UI
     // String uiName
     test('to test the property `uiName`', () async {
       // TODO
     });
 
-    // Variable name for the generation
+    // Name in the UI
     // String variableName
     test('to test the property `variableName`', () async {
       // TODO
     });
 
-    // Description of the Notification
+    // Description of the notification
     // String description
     test('to test the property `description`', () async {
       // TODO
     });
 
-    // Material type of the Notification
+    // Material identifier
     // String material
     test('to test the property `material`', () async {
       // TODO
     });
 
-    // Frame type of the Notification
+    // Type of frame
     // String frameType
     test('to test the property `frameType`', () async {
       // TODO
     });
 
-    // Title of the Notification
+    // Title of the notification
     // String title
     test('to test the property `title`', () async {
       // TODO
