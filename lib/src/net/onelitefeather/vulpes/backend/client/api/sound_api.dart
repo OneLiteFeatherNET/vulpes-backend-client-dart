@@ -392,6 +392,7 @@ class SoundApi {
   /// Retrieves all sound events from the database.
   ///
   /// Parameters:
+  /// * [pageable] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -402,6 +403,7 @@ class SoundApi {
   /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<JsonObject>>> getAllSoundEvents({ 
+    required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -422,9 +424,14 @@ class SoundApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

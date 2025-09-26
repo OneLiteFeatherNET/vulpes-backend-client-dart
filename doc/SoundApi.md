@@ -194,7 +194,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllSoundEvents**
-> BuiltList<JsonObject> getAllSoundEvents()
+> BuiltList<JsonObject> getAllSoundEvents(pageable)
 
 Get all sound events
 
@@ -205,9 +205,10 @@ Retrieves all sound events from the database.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getSoundApi();
+final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getAllSoundEvents();
+    final response = api.getAllSoundEvents(pageable);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling SoundApi->getAllSoundEvents: $e\n');
@@ -215,7 +216,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
