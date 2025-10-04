@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEnchantmentsById**
-> ResponseItemModelEnchantmentDTO getEnchantmentsById(id)
+> BuiltList<ResponseEnchantmentDTO> getEnchantmentsById(id, pageable)
 
 Get enchantments of an item
 
@@ -158,9 +158,10 @@ import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getEnchantmentsById(id);
+    final response = api.getEnchantmentsById(id, pageable);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ItemApi->getEnchantmentsById: $e\n');
@@ -172,10 +173,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
-[**ResponseItemModelEnchantmentDTO**](ResponseItemModelEnchantmentDTO.md)
+[**BuiltList&lt;ResponseEnchantmentDTO&gt;**](ResponseEnchantmentDTO.md)
 
 ### Authorization
 
@@ -189,7 +191,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFlagsById**
-> ResponseItemModelFlagDTO getFlagsById(id)
+> BuiltList<String> getFlagsById(id, pageable)
 
 Get all flags of an item
 
@@ -201,9 +203,10 @@ import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getFlagsById(id);
+    final response = api.getFlagsById(id, pageable);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ItemApi->getFlagsById: $e\n');
@@ -215,10 +218,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
-[**ResponseItemModelFlagDTO**](ResponseItemModelFlagDTO.md)
+**BuiltList&lt;String&gt;**
 
 ### Authorization
 
@@ -275,7 +279,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLoreById**
-> ResponseItemModelLoreDTO getLoreById(id)
+> BuiltList<String> getLoreById(id, pageable)
 
 Get all lore of an item
 
@@ -287,9 +291,10 @@ import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final Pageable pageable = ; // Pageable | 
 
 try {
-    final response = api.getLoreById(id);
+    final response = api.getLoreById(id, pageable);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ItemApi->getLoreById: $e\n');
@@ -301,10 +306,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
-[**ResponseItemModelLoreDTO**](ResponseItemModelLoreDTO.md)
+**BuiltList&lt;String&gt;**
 
 ### Authorization
 

@@ -26,13 +26,11 @@ export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable_mode.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_attribute_model_dto.dart';
+export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_enchantment_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_chars_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_error_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
-export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
-export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
-export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_notification_model_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
 export 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_file_source_dto.dart';

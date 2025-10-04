@@ -38,7 +38,7 @@ void main() {
     //
     // Retrieves the enchantments of an item by its ID.
     //
-    //Future<ResponseItemModelEnchantmentDTO> getEnchantmentsById(String id) async
+    //Future<BuiltList<ResponseEnchantmentDTO>> getEnchantmentsById(String id, Pageable pageable) async
     test('test getEnchantmentsById', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Retrieves all flags of an item by its ID.
     //
-    //Future<ResponseItemModelFlagDTO> getFlagsById(String id) async
+    //Future<BuiltList<String>> getFlagsById(String id, Pageable pageable) async
     test('test getFlagsById', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Retrieves all lore of an item by its ID.
     //
-    //Future<ResponseItemModelLoreDTO> getLoreById(String id) async
+    //Future<BuiltList<String>> getLoreById(String id, Pageable pageable) async
     test('test getLoreById', () async {
       // TODO
     });

@@ -24,13 +24,11 @@ import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/clie
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable_mode.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_attribute_model_dto.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_enchantment_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_chars_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_notification_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_file_source_dto.dart';
@@ -54,13 +52,11 @@ part 'serializers.g.dart';
   Pageable,
   PageableMode,
   ResponseAttributeModelDTO,
+  ResponseEnchantmentDTO,
   ResponseFontModelCharsDTO,
   ResponseFontModelDTO,
   ResponseFontModelErrorDTO,
   ResponseItemModelDTO,
-  ResponseItemModelEnchantmentDTO,
-  ResponseItemModelFlagDTO,
-  ResponseItemModelLoreDTO,
   ResponseNotificationModelDTO,
   ResponseSoundErrorDTO,
   ResponseSoundFileSourceDTO,
@@ -77,12 +73,20 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<ResponseAttributeModelDTO>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseEnchantmentDTO)]),
+        () => ListBuilder<ResponseEnchantmentDTO>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseItemModelDTO)]),
         () => ListBuilder<ResponseItemModelDTO>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(JsonObject)]),
         () => ListBuilder<JsonObject>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(String)]),
+        () => ListBuilder<String>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseFontModelDTO)]),

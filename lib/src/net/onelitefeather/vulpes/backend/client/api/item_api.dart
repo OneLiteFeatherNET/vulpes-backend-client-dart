@@ -13,10 +13,8 @@ import 'package:vulpes_backend_client/src/api_util.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_error_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
+import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_enchantment_dto.dart';
 import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
 
 class ItemApi {
 
@@ -279,6 +277,7 @@ class ItemApi {
   ///
   /// Parameters:
   /// * [id] 
+  /// * [pageable] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -286,10 +285,11 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseItemModelEnchantmentDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseEnchantmentDTO>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseItemModelEnchantmentDTO>> getEnchantmentsById({ 
+  Future<Response<BuiltList<ResponseEnchantmentDTO>>> getEnchantmentsById({ 
     required String id,
+    required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -310,22 +310,27 @@ class ItemApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseItemModelEnchantmentDTO? _responseData;
+    BuiltList<ResponseEnchantmentDTO>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseItemModelEnchantmentDTO),
-      ) as ResponseItemModelEnchantmentDTO;
+        specifiedType: const FullType(BuiltList, [FullType(ResponseEnchantmentDTO)]),
+      ) as BuiltList<ResponseEnchantmentDTO>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -337,7 +342,7 @@ class ItemApi {
       );
     }
 
-    return Response<ResponseItemModelEnchantmentDTO>(
+    return Response<BuiltList<ResponseEnchantmentDTO>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -354,6 +359,7 @@ class ItemApi {
   ///
   /// Parameters:
   /// * [id] 
+  /// * [pageable] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -361,10 +367,11 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseItemModelFlagDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseItemModelFlagDTO>> getFlagsById({ 
+  Future<Response<BuiltList<String>>> getFlagsById({ 
     required String id,
+    required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -385,22 +392,27 @@ class ItemApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseItemModelFlagDTO? _responseData;
+    BuiltList<String>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseItemModelFlagDTO),
-      ) as ResponseItemModelFlagDTO;
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      ) as BuiltList<String>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -412,7 +424,7 @@ class ItemApi {
       );
     }
 
-    return Response<ResponseItemModelFlagDTO>(
+    return Response<BuiltList<String>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -504,6 +516,7 @@ class ItemApi {
   ///
   /// Parameters:
   /// * [id] 
+  /// * [pageable] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -511,10 +524,11 @@ class ItemApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ResponseItemModelLoreDTO] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ResponseItemModelLoreDTO>> getLoreById({ 
+  Future<Response<BuiltList<String>>> getLoreById({ 
     required String id,
+    required Pageable pageable,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -535,22 +549,27 @@ class ItemApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      r'pageable': encodeQueryParameter(_serializers, pageable, const FullType(Pageable)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseItemModelLoreDTO? _responseData;
+    BuiltList<String>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ResponseItemModelLoreDTO),
-      ) as ResponseItemModelLoreDTO;
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      ) as BuiltList<String>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -562,7 +581,7 @@ class ItemApi {
       );
     }
 
-    return Response<ResponseItemModelLoreDTO>(
+    return Response<BuiltList<String>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
