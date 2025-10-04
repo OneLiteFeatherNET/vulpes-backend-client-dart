@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getAllFonts**](FontApi.md#getallfonts) | **GET** /font/all | Get all fonts
 [**getCharsById**](FontApi.md#getcharsbyid) | **GET** /font/chars/{id} | Get characters by font ID
 [**getFontById**](FontApi.md#getfontbyid) | **GET** /font/{id} | Get a font by ID
+[**updateChars**](FontApi.md#updatechars) | **POST** /font/chars/{id} | Update characters of a font
 [**updateFont**](FontApi.md#updatefont) | **POST** /font/update | Update a font
 
 
@@ -268,6 +269,51 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateChars**
+> BuiltList<ResponseFontModelCharsDTO> updateChars(id, requestBody)
+
+Update characters of a font
+
+Updates the characters of a font in the database.
+
+### Example
+```dart
+import 'package:vulpes_backend_client/api.dart';
+
+final api = VulpesBackendClient().getFontApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final BuiltList<String> requestBody = ; // BuiltList<String> | 
+
+try {
+    final response = api.updateChars(id, requestBody);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling FontApi->updateChars: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **requestBody** | [**BuiltList&lt;String&gt;**](String.md)|  | 
+
+### Return type
+
+[**BuiltList&lt;ResponseFontModelCharsDTO&gt;**](ResponseFontModelCharsDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -61,6 +61,15 @@ void main() {
       // TODO
     });
 
+    // Update characters of a font
+    //
+    // Updates the characters of a font in the database.
+    //
+    //Future<BuiltList<ResponseFontModelCharsDTO>> updateChars(String id, BuiltList<String> requestBody) async
+    test('test updateChars', () async {
+      // TODO
+    });
+
     // Update a font
     //
     // Updates a font in the database.

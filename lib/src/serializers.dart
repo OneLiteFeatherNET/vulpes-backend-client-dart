@@ -73,6 +73,10 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<ResponseAttributeModelDTO>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseFontModelCharsDTO)]),
+        () => ListBuilder<ResponseFontModelCharsDTO>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseEnchantmentDTO)]),
         () => ListBuilder<ResponseEnchantmentDTO>(),
       )
