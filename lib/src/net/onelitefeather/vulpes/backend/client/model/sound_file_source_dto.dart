@@ -11,6 +11,7 @@ part 'sound_file_source_dto.g.dart';
 /// SoundFileSourceDTO
 ///
 /// Properties:
+/// * [id] 
 /// * [name] 
 /// * [volume] 
 /// * [pitch] 
@@ -19,9 +20,11 @@ part 'sound_file_source_dto.g.dart';
 /// * [attenuationDistance] 
 /// * [preload] 
 /// * [type] 
-/// * [id] 
 @BuiltValue()
 abstract class SoundFileSourceDTO implements Built<SoundFileSourceDTO, SoundFileSourceDTOBuilder> {
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -46,9 +49,6 @@ abstract class SoundFileSourceDTO implements Built<SoundFileSourceDTO, SoundFile
   @BuiltValueField(wireName: r'type')
   String get type;
 
-  @BuiltValueField(wireName: r'id')
-  String get id;
-
   SoundFileSourceDTO._();
 
   factory SoundFileSourceDTO([void updates(SoundFileSourceDTOBuilder b)]) = _$SoundFileSourceDTO;
@@ -72,6 +72,11 @@ class _$SoundFileSourceDTOSerializer implements PrimitiveSerializer<SoundFileSou
     SoundFileSourceDTO object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -112,11 +117,6 @@ class _$SoundFileSourceDTOSerializer implements PrimitiveSerializer<SoundFileSou
       object.type,
       specifiedType: const FullType(String),
     );
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -140,6 +140,13 @@ class _$SoundFileSourceDTOSerializer implements PrimitiveSerializer<SoundFileSou
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
@@ -195,13 +202,6 @@ class _$SoundFileSourceDTOSerializer implements PrimitiveSerializer<SoundFileSou
             specifiedType: const FullType(String),
           ) as String;
           result.type = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -25,9 +25,9 @@ void main() {
       // TODO
     });
 
-    // Description of the notification
-    // String description
-    test('to test the property `description`', () async {
+    // Comment of the notification
+    // String comment
+    test('to test the property `comment`', () async {
       // TODO
     });
 

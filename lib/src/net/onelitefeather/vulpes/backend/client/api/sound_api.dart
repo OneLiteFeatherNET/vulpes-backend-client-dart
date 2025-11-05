@@ -295,8 +295,9 @@ class SoundApi {
   /// Deletes an existing SoundFileSource linked to a SoundEventEntity by its ID.
   ///
   /// Parameters:
-  /// * [id] - the ID of the SoundEventEntity
-  /// * [soundFileSourceDTO] - the DTO containing source data to delete
+  /// * [id] - The id of the sound event
+  /// * [soundID] - The id of the sound file
+  /// * [soundId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -308,7 +309,8 @@ class SoundApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseSoundFileSourceDTO>> deleteLinkedSoundFileSource({ 
     required String id,
-    required SoundFileSourceDTO soundFileSourceDTO,
+    required String soundID,
+    required String soundId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -316,7 +318,7 @@ class SoundApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/sound/{id}/sources/delete'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/sound/{id}/sources/delete/{soundId}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString()).replaceAll('{' r'soundID' '}', encodeQueryParameter(_serializers, soundID, const FullType(String)).toString()).replaceAll('{' r'soundId' '}', encodeQueryParameter(_serializers, soundId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -326,31 +328,11 @@ class SoundApi {
         'secure': <Map<String, String>>[],
         ...?extra,
       },
-      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(SoundFileSourceDTO);
-      _bodyData = _serializers.serialize(soundFileSourceDTO, specifiedType: _type);
-
-    } catch(error, stackTrace) {
-      throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

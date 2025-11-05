@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**addSoundEvent**](SoundApi.md#addsoundevent) | **POST** /sound | Add a new sound event
 [**createAndLinkSoundFileSource**](SoundApi.md#createandlinksoundfilesource) | **POST** /sound/{id}/sources | Create and link a SoundFileSource
 [**deleteAllSoundEvents**](SoundApi.md#deleteallsoundevents) | **DELETE** /sound/delete/all | Delete all sound events
-[**deleteLinkedSoundFileSource**](SoundApi.md#deletelinkedsoundfilesource) | **DELETE** /sound/{id}/sources/delete | Delete a linked SoundFileSource
+[**deleteLinkedSoundFileSource**](SoundApi.md#deletelinkedsoundfilesource) | **DELETE** /sound/{id}/sources/delete/{soundId} | Delete a linked SoundFileSource
 [**getAllSoundEvents**](SoundApi.md#getallsoundevents) | **GET** /sound/all | Get all sound events
 [**getSoundById**](SoundApi.md#getsoundbyid) | **GET** /sound/{id} | Get a sound by its ID
 [**getSoundSourcesById**](SoundApi.md#getsoundsourcesbyid) | **GET** /sound/{id}/sources | Get all sound file sources by an id
@@ -149,7 +149,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteLinkedSoundFileSource**
-> ResponseSoundFileSourceDTO deleteLinkedSoundFileSource(id, soundFileSourceDTO)
+> ResponseSoundFileSourceDTO deleteLinkedSoundFileSource(id, soundID, soundId)
 
 Delete a linked SoundFileSource
 
@@ -160,11 +160,12 @@ Deletes an existing SoundFileSource linked to a SoundEventEntity by its ID.
 import 'package:vulpes_backend_client/api.dart';
 
 final api = VulpesBackendClient().getSoundApi();
-final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | the ID of the SoundEventEntity
-final SoundFileSourceDTO soundFileSourceDTO = ; // SoundFileSourceDTO | the DTO containing source data to delete
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The id of the sound event
+final String soundID = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The id of the sound file
+final String soundId = soundId_example; // String | 
 
 try {
-    final response = api.deleteLinkedSoundFileSource(id, soundFileSourceDTO);
+    final response = api.deleteLinkedSoundFileSource(id, soundID, soundId);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling SoundApi->deleteLinkedSoundFileSource: $e\n');
@@ -175,8 +176,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| the ID of the SoundEventEntity | 
- **soundFileSourceDTO** | [**SoundFileSourceDTO**](SoundFileSourceDTO.md)| the DTO containing source data to delete | 
+ **id** | **String**| The id of the sound event | 
+ **soundID** | **String**| The id of the sound file | 
+ **soundId** | **String**|  | 
 
 ### Return type
 
@@ -188,7 +190,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

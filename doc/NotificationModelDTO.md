@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** | ID of the notification | [optional] 
 **uiName** | **String** | Model variableName for the UI | 
 **variableName** | **String** | Name in the UI | 
-**description** | **String** | Description of the notification | 
+**comment** | **String** | Comment of the notification | 
 **material** | **String** | Material identifier | 
 **frameType** | **String** | Type of frame | 
 **title** | **String** | Title of the notification | 

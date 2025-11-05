@@ -15,15 +15,15 @@ part 'item_model_dto.g.dart';
 /// * [id] - ID of the Model
 /// * [uiName] - Name in the UI
 /// * [variableName] - Variable name for the entity
-/// * [description] - Example comment
-/// * [displayName] - Example comment
-/// * [material] - Example comment
-/// * [groupName] - Example comment
-/// * [customModelData] - Example comment
-/// * [amount] - Example comment
-/// * [enchantments] - Example comment
-/// * [lore] - Example comment
-/// * [flags] - Example comment
+/// * [comment] - Internal description of the item
+/// * [displayName] - The display name of the item
+/// * [material] - The material from the item
+/// * [group] - The group to identify their basic usage
+/// * [customModelData] - Integer which refers to the customModelData index
+/// * [amount] - The amount of the item
+/// * [enchantments] - The given enchantments
+/// * [lore] - The given lore from the item
+/// * [flags] - The flags which the item should have
 @BuiltValue()
 abstract class ItemModelDTO implements Built<ItemModelDTO, ItemModelDTOBuilder> {
   /// ID of the Model
@@ -38,39 +38,39 @@ abstract class ItemModelDTO implements Built<ItemModelDTO, ItemModelDTOBuilder> 
   @BuiltValueField(wireName: r'variableName')
   String get variableName;
 
-  /// Example comment
-  @BuiltValueField(wireName: r'description')
-  String get description;
+  /// Internal description of the item
+  @BuiltValueField(wireName: r'comment')
+  String get comment;
 
-  /// Example comment
+  /// The display name of the item
   @BuiltValueField(wireName: r'displayName')
   String get displayName;
 
-  /// Example comment
+  /// The material from the item
   @BuiltValueField(wireName: r'material')
   String get material;
 
-  /// Example comment
-  @BuiltValueField(wireName: r'groupName')
-  String get groupName;
+  /// The group to identify their basic usage
+  @BuiltValueField(wireName: r'group')
+  String get group;
 
-  /// Example comment
+  /// Integer which refers to the customModelData index
   @BuiltValueField(wireName: r'customModelData')
   int get customModelData;
 
-  /// Example comment
+  /// The amount of the item
   @BuiltValueField(wireName: r'amount')
   int get amount;
 
-  /// Example comment
+  /// The given enchantments
   @BuiltValueField(wireName: r'enchantments')
   BuiltMap<String, int>? get enchantments;
 
-  /// Example comment
+  /// The given lore from the item
   @BuiltValueField(wireName: r'lore')
   BuiltList<String>? get lore;
 
-  /// Example comment
+  /// The flags which the item should have
   @BuiltValueField(wireName: r'flags')
   BuiltList<String>? get flags;
 
@@ -114,9 +114,9 @@ class _$ItemModelDTOSerializer implements PrimitiveSerializer<ItemModelDTO> {
       object.variableName,
       specifiedType: const FullType(String),
     );
-    yield r'description';
+    yield r'comment';
     yield serializers.serialize(
-      object.description,
+      object.comment,
       specifiedType: const FullType(String),
     );
     yield r'displayName';
@@ -129,9 +129,9 @@ class _$ItemModelDTOSerializer implements PrimitiveSerializer<ItemModelDTO> {
       object.material,
       specifiedType: const FullType(String),
     );
-    yield r'groupName';
+    yield r'group';
     yield serializers.serialize(
-      object.groupName,
+      object.group,
       specifiedType: const FullType(String),
     );
     yield r'customModelData';
@@ -209,12 +209,12 @@ class _$ItemModelDTOSerializer implements PrimitiveSerializer<ItemModelDTO> {
           ) as String;
           result.variableName = valueDes;
           break;
-        case r'description':
+        case r'comment':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.description = valueDes;
+          result.comment = valueDes;
           break;
         case r'displayName':
           final valueDes = serializers.deserialize(
@@ -230,12 +230,12 @@ class _$ItemModelDTOSerializer implements PrimitiveSerializer<ItemModelDTO> {
           ) as String;
           result.material = valueDes;
           break;
-        case r'groupName':
+        case r'group':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.groupName = valueDes;
+          result.group = valueDes;
           break;
         case r'customModelData':
           final valueDes = serializers.deserialize(

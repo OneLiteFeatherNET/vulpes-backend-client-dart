@@ -50,7 +50,7 @@ abstract class FontModelDTO implements Built<FontModelDTO, FontModelDTOBuilder> 
 
   /// The comment
   @BuiltValueField(wireName: r'comment')
-  String get comment;
+  String? get comment;
 
   /// The ascent property
   @BuiltValueField(wireName: r'ascent')
@@ -120,9 +120,9 @@ class _$FontModelDTOSerializer implements PrimitiveSerializer<FontModelDTO> {
       specifiedType: const FullType(String),
     );
     yield r'comment';
-    yield serializers.serialize(
+    yield object.comment == null ? null : serializers.serialize(
       object.comment,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType.nullable(String),
     );
     yield r'ascent';
     yield serializers.serialize(
@@ -209,8 +209,9 @@ class _$FontModelDTOSerializer implements PrimitiveSerializer<FontModelDTO> {
         case r'comment':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.comment = valueDes;
           break;
         case r'ascent':

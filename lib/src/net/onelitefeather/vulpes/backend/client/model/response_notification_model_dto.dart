@@ -14,7 +14,7 @@ part 'response_notification_model_dto.g.dart';
 /// * [id] - The id of the model
 /// * [uiName] - Model Name for the UI
 /// * [variableName] - Variable name for the generation
-/// * [description] - Description of the Notification
+/// * [comment] - Description of the Notification
 /// * [material] - Material type of the Notification
 /// * [frameType] - Frame type of the Notification
 /// * [title] - Title of the Notification
@@ -33,8 +33,8 @@ abstract class ResponseNotificationModelDTO implements Built<ResponseNotificatio
   String? get variableName;
 
   /// Description of the Notification
-  @BuiltValueField(wireName: r'description')
-  String? get description;
+  @BuiltValueField(wireName: r'comment')
+  String? get comment;
 
   /// Material type of the Notification
   @BuiltValueField(wireName: r'material')
@@ -92,10 +92,10 @@ class _$ResponseNotificationModelDTOSerializer implements PrimitiveSerializer<Re
         specifiedType: const FullType(String),
       );
     }
-    if (object.description != null) {
-      yield r'description';
+    if (object.comment != null) {
+      yield r'comment';
       yield serializers.serialize(
-        object.description,
+        object.comment,
         specifiedType: const FullType(String),
       );
     }
@@ -164,12 +164,12 @@ class _$ResponseNotificationModelDTOSerializer implements PrimitiveSerializer<Re
           ) as String;
           result.variableName = valueDes;
           break;
-        case r'description':
+        case r'comment':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.description = valueDes;
+          result.comment = valueDes;
           break;
         case r'material':
           final valueDes = serializers.deserialize(
