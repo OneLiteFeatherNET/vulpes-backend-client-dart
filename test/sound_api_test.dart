@@ -38,7 +38,7 @@ void main() {
     //
     // Deletes an existing SoundFileSource linked to a SoundEventEntity by its ID.
     //
-    //Future<ResponseSoundFileSourceDTO> deleteLinkedSoundFileSource(String id, SoundFileSourceDTO soundFileSourceDTO) async
+    //Future<ResponseSoundFileSourceDTO> deleteLinkedSoundFileSource(String id, String soundID, String soundId) async
     test('test deleteLinkedSoundFileSource', () async {
       // TODO
     });

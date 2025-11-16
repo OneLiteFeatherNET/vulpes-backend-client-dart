@@ -1,0 +1,16 @@
+# vulpes_backend_client.model.ItemFlagDTO
+
+## Load the model package
+```dart
+import 'package:vulpes_backend_client/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**flag** | **String** | Flag of the Model | 
+**id** | **String** | ID of the Model | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

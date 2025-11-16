@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **comment** | **String** | Example comment | 
 **ascent** | **int** | Example comment | 
 **height** | **int** | Example comment | 
-**chars** | **BuiltList&lt;String&gt;** | Example comment | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

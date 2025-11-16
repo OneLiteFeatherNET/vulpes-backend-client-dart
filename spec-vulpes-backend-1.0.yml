@@ -1,0 +1,2656 @@
+openapi: 3.0.1
+info:
+  title: Vulpes Backend
+  description: |-
+    Vulpes Backend API handles the custom attributes, fonts, items and notifications API for Dungeon Project.
+    It provides endpoints to manage custom attributes, fonts, items, and notifications.
+    The API is designed to be used by the Vulpes Generator to generate dependencies for Minestom Server
+  version: "1.0"
+tags:
+- name: Attribute
+  description: Custom Minecraft Attribute API
+- name: Font
+  description: Custom Minecraft Font API
+- name: Item
+  description: Custom Minecraft Item API
+- name: Notification
+  description: Custom Minecraft Notification API
+paths:
+  /attribute:
+    get:
+      tags:
+      - Attribute
+      summary: Get all attributes
+      description: Gets all attributes from the database.
+      operationId: getAllAttributes
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The attributes were successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseAttributeModelDTO"
+    post:
+      tags:
+      - Attribute
+      summary: Add a new attribute
+      description: Adds a new attribute to the database. The attribute is created
+        with the given properties.
+      operationId: addAttribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AttributeModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The attribute was successfully added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAttributeModelDTO"
+        "500":
+          description: The attribute could not be added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttributeModelErrorDTO"
+  /attribute/delete:
+    delete:
+      tags:
+      - Attribute
+      summary: Delete all attributes
+      description: Deletes all attributes from the database.
+      operationId: deleteAllAttributes
+      responses:
+        "200":
+          description: All attributes were successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAttributeModelDTO"
+  /attribute/delete/{id}:
+    delete:
+      tags:
+      - Attribute
+      summary: Delete an attribute by ID
+      description: Deletes the attribute with the given ID.
+      operationId: deleteAttributeById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The attribute was successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAttributeModelDTO"
+        "404":
+          description: The attribute was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttributeModelErrorDTO"
+  /attribute/update:
+    post:
+      tags:
+      - Attribute
+      summary: Update an attribute
+      description: Returns the attribute with the given ID.
+      operationId: updateAttribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AttributeModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The attribute was successfully found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseAttributeModelDTO"
+        "404":
+          description: The attribute was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttributeModelErrorDTO"
+  /font:
+    get:
+      tags:
+      - Font
+      summary: Get all fonts
+      description: Gets all fonts from the database.
+      operationId: getAllFonts
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The fonts were successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseFontModelDTO"
+    post:
+      tags:
+      - Font
+      summary: Add a new font
+      description: Adds a new font to the database. The font is created with the given
+        properties.
+      operationId: addFont
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FontModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The font was successfully added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelDTO"
+        "500":
+          description: The font could not be added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelErrorDTO"
+  /font/chars/{fontId}:
+    delete:
+      tags:
+      - Font
+      summary: Delete character of a font
+      description: Delete the character of a font in the database.
+      operationId: deleteChar
+      parameters:
+      - name: fontId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The characters of the font were successfully deleted in the
+            database.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FontStringResponseDTO"
+  /font/chars/{fontId}/{charId}:
+    delete:
+      tags:
+      - Font
+      summary: Delete character of a font
+      description: Delete the character of a font in the database.
+      operationId: deleteChar_1
+      parameters:
+      - name: fontId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: charId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The characters of the font were successfully updated in the
+            database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontStringDTO"
+        "404":
+          description: The character was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontStringErrorDTO"
+  /font/chars/{id}:
+    get:
+      tags:
+      - Font
+      summary: Get characters by font ID
+      description: Gets the characters of a font by its ID from the database.
+      operationId: getCharsById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The characters of the font were successfully retrieved from
+            the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FontStringResponseDTO"
+        "404":
+          description: The font was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelErrorDTO"
+    put:
+      tags:
+      - Font
+      summary: Create character of a font
+      description: Create the character of a font in the database.
+      operationId: createChar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FontStringDTO"
+        required: true
+      responses:
+        "200":
+          description: The characters of the font were successfully updated in the
+            database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FontStringResponseDTO"
+    post:
+      tags:
+      - Font
+      summary: Update character of a font
+      description: Updates the character of a font in the database.
+      operationId: updateChar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FontStringDTO"
+        required: true
+      responses:
+        "200":
+          description: The characters of the font were successfully updated in the
+            database.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FontStringResponseDTO"
+  /font/delete:
+    delete:
+      tags:
+      - Font
+      summary: Delete all fonts
+      description: Deletes all fonts from the database.
+      operationId: deleteAllFonts
+      responses:
+        "200":
+          description: All fonts were successfully deleted from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelDTO"
+  /font/delete/{id}:
+    delete:
+      tags:
+      - Font
+      summary: Remove a font by ID
+      description: Removes a font by ID from the database.
+      operationId: deleteFont
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The font was successfully removed from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelDTO"
+        "404":
+          description: The font was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelErrorDTO"
+  /font/update:
+    post:
+      tags:
+      - Font
+      summary: Update a font
+      description: Updates a font in the database.
+      operationId: updateFont
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FontModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The font was successfully updated in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelDTO"
+        "404":
+          description: The font was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelErrorDTO"
+  /font/{id}:
+    get:
+      tags:
+      - Font
+      summary: Get a font by ID
+      description: Gets a font by ID from the database.
+      operationId: getFontById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The font was successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelDTO"
+        "404":
+          description: The font was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseFontModelErrorDTO"
+  /item:
+    get:
+      tags:
+      - Item
+      summary: Get all items
+      description: "Retrieves a pageable list of all items. Supports standard Micronaut\
+        \ pagination (page, size, sort)."
+      operationId: getAllItems
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Items successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemModelDTO"
+    post:
+      tags:
+      - Item
+      summary: Create a new item
+      description: Creates a new item with the provided properties and stores it in
+        the database.
+      operationId: addItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemModelDTO"
+        required: true
+      responses:
+        "200":
+          description: Item successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemModelDTO"
+        "500":
+          description: Item could not be created due to an internal error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemModelErrorDTO"
+  /item/delete/{itemId}:
+    delete:
+      tags:
+      - Item
+      summary: Remove an item by ID
+      description: Deletes an item from the database by its unique ID (itemId).
+      operationId: removeItemById
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Item successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemModelDTO"
+        "404":
+          description: Item with the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemModelErrorDTO"
+  /item/deleteAll:
+    delete:
+      tags:
+      - Item
+      summary: Delete all items
+      description: Deletes all items from the database.
+      operationId: deleteAll
+      responses:
+        "200":
+          description: All items were successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemModelDTO"
+  /item/enchantment/{itemId}:
+    put:
+      tags:
+      - Item
+      summary: Create an enchantment for an item
+      description: Creates a new enchantment entry for the item identified by itemId.
+      operationId: createEnchantment
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemEnchantmentDTO"
+        required: true
+      responses:
+        "200":
+          description: Enchantment successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update an enchantment of an item
+      description: Updates a specific enchantment of the item identified by itemId.
+      operationId: updateEnchantment
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemEnchantmentDTO"
+        required: true
+      responses:
+        "200":
+          description: Enchantment successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all enchantments of an item
+      description: Deletes all enchantments of the item identified by itemId.
+      operationId: deleteEnchantments
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Enchantments successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+  /item/enchantment/{itemId}/{enchantmentId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete an enchantment of an item
+      description: Deletes a specific enchantment (enchantmentId) of the item identified
+        by itemId.
+      operationId: deleteEnchantment
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: enchantmentId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Enchantment successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+  /item/enchantments/{itemId}:
+    get:
+      tags:
+      - Item
+      summary: Get enchantments of an item
+      description: Retrieves a pageable list of enchantments for the item identified
+        by itemId.
+      operationId: getEnchantments
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Enchantments successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemEnchantmentResponseDTO"
+  /item/flag/{itemId}:
+    put:
+      tags:
+      - Item
+      summary: Create flag of an item
+      description: Creates a new flag entry for the item identified by itemId.
+      operationId: createFlag
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemFlagDTO"
+        required: true
+      responses:
+        "200":
+          description: Flag successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update flag of an item
+      description: Updates a specific flag of the item identified by itemId.
+      operationId: updateFlag
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemFlagDTO"
+        required: true
+      responses:
+        "200":
+          description: Flag successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all flags of an item
+      description: Deletes all flags of the item identified by itemId.
+      operationId: deleteFlags
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: All flags were successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+  /item/flag/{itemId}/{flagId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete flag of an item
+      description: Deletes a specific flag (flagId) of the item identified by itemId.
+      operationId: deleteFlag
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: flagId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Flag successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+  /item/flags/{itemId}:
+    get:
+      tags:
+      - Item
+      summary: Get all flags of an item
+      description: Retrieves a pageable list of flags for the item identified by itemId.
+      operationId: getFlags
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Flags successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemFlagDTO"
+  /item/lore/{itemId}:
+    get:
+      tags:
+      - Item
+      summary: Get all lore of an item
+      description: Retrieves a pageable list of lore entries for the item identified
+        by itemId.
+      operationId: getLore
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Lore successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemLoreResponseDTO"
+    put:
+      tags:
+      - Item
+      summary: Create lore of an item
+      description: Creates a new lore entry for the item identified by itemId.
+      operationId: createLore
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemLoreDTO"
+        required: true
+      responses:
+        "200":
+          description: Lore successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update lore of an item
+      description: Updates a specific lore entry of the item identified by itemId.
+      operationId: updateLore
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemLoreDTO"
+        required: true
+      responses:
+        "200":
+          description: Lore successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all lore of an item
+      description: Deletes all lore entries of the item identified by itemId.
+      operationId: deleteAllLore
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: All lore entries were successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+  /item/lore/{itemId}/{loreId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete lore of an item
+      description: Deletes a specific lore entry (loreId) of the item identified by
+        itemId.
+      operationId: deleteLore
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: loreId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Lore successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+  /item/update:
+    post:
+      tags:
+      - Item
+      summary: Update an item
+      description: Updates an existing item in the database.
+      operationId: updateItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemModelDTO"
+        required: true
+      responses:
+        "200":
+          description: Item successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemModelDTO"
+        "404":
+          description: Item was not found and could not be updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemModelErrorDTO"
+  /item/{itemId}:
+    get:
+      tags:
+      - Item
+      summary: Get an item by ID
+      description: Retrieves a single item from the database by its unique ID (itemId).
+      operationId: getItemById
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Item successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemModelDTO"
+        "404":
+          description: Item with the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemModelErrorDTO"
+  /item/{itemId}/enchantment:
+    put:
+      tags:
+      - Item
+      summary: Create an enchantment for an item
+      description: Creates a new enchantment entry for the item identified by itemId.
+      operationId: createEnchantment_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemEnchantmentDTO"
+        required: true
+      responses:
+        "200":
+          description: Enchantment successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update an enchantment of an item
+      description: Updates a specific enchantment of the item identified by itemId.
+      operationId: updateEnchantment_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemEnchantmentDTO"
+        required: true
+      responses:
+        "200":
+          description: Enchantment successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all enchantments of an item
+      description: Deletes all enchantments of the item identified by itemId.
+      operationId: deleteEnchantments_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Enchantments successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+  /item/{itemId}/enchantment/{enchantmentId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete an enchantment of an item
+      description: Deletes a specific enchantment (enchantmentId) of the item identified
+        by itemId.
+      operationId: deleteEnchantment_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: enchantmentId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Enchantment successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemEnchantmentErrorDTO"
+  /item/{itemId}/enchantments:
+    get:
+      tags:
+      - Item
+      summary: Get enchantments of an item
+      description: Retrieves a pageable list of enchantments for the item identified
+        by itemId.
+      operationId: getEnchantments_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Enchantments successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemEnchantmentResponseDTO"
+  /item/{itemId}/flag:
+    put:
+      tags:
+      - Item
+      summary: Create flag of an item
+      description: Creates a new flag entry for the item identified by itemId.
+      operationId: createFlag_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemFlagDTO"
+        required: true
+      responses:
+        "200":
+          description: Flag successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update flag of an item
+      description: Updates a specific flag of the item identified by itemId.
+      operationId: updateFlag_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemFlagDTO"
+        required: true
+      responses:
+        "200":
+          description: Flag successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all flags of an item
+      description: Deletes all flags of the item identified by itemId.
+      operationId: deleteFlags_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: All flags were successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+  /item/{itemId}/flag/{flagId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete flag of an item
+      description: Deletes a specific flag (flagId) of the item identified by itemId.
+      operationId: deleteFlag_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: flagId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Flag successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemFlagErrorDTO"
+  /item/{itemId}/flags:
+    get:
+      tags:
+      - Item
+      summary: Get all flags of an item
+      description: Retrieves a pageable list of flags for the item identified by itemId.
+      operationId: getFlags_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Flags successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemFlagDTO"
+  /item/{itemId}/lore:
+    get:
+      tags:
+      - Item
+      summary: Get all lore of an item
+      description: Retrieves a pageable list of lore entries for the item identified
+        by itemId.
+      operationId: getLore_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: Lore successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemLoreResponseDTO"
+    put:
+      tags:
+      - Item
+      summary: Create lore of an item
+      description: Creates a new lore entry for the item identified by itemId.
+      operationId: createLore_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemLoreDTO"
+        required: true
+      responses:
+        "200":
+          description: Lore successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+    post:
+      tags:
+      - Item
+      summary: Update lore of an item
+      description: Updates a specific lore entry of the item identified by itemId.
+      operationId: updateLore_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemLoreDTO"
+        required: true
+      responses:
+        "200":
+          description: Lore successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+    delete:
+      tags:
+      - Item
+      summary: Delete all lore of an item
+      description: Deletes all lore entries of the item identified by itemId.
+      operationId: deleteAllLore_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: All lore entries were successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+  /item/{itemId}/lore/{loreId}:
+    delete:
+      tags:
+      - Item
+      summary: Delete lore of an item
+      description: Deletes a specific lore entry (loreId) of the item identified by
+        itemId.
+      operationId: deleteLore_1
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: loreId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: Lore successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreDTO"
+        "404":
+          description: Item for the given ID was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseItemLoreErrorDTO"
+  /notification:
+    get:
+      tags:
+      - Notification
+      summary: Get all notifications
+      description: Retrieves all notifications from the database.
+      operationId: getAllNotifications
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The notifications were successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResponseNotificationModelDTO"
+        "404":
+          description: No notifications were found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationModelErrorDTO"
+    post:
+      tags:
+      - Notification
+      summary: Add a new notification
+      description: Adds a new notification to the database.
+      operationId: addNotification
+      requestBody:
+        description: the notification model to be added
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NotificationModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The notification was successfully added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseNotificationModelDTO"
+        "500":
+          description: The notification could not be added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationModelErrorDTO"
+  /notification/delete:
+    delete:
+      tags:
+      - Notification
+      summary: Delete all notifications
+      description: Deletes all notifications from the database.
+      operationId: deleteAllNotifications
+      responses:
+        "200":
+          description: All notifications were successfully deleted from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseNotificationModelDTO"
+  /notification/delete/{id}:
+    delete:
+      tags:
+      - Notification
+      summary: Remove a notification by ID
+      description: Removes a notification from the database by its ID.
+      operationId: removeNotificationById
+      parameters:
+      - name: id
+        in: path
+        description: the ID of the notification to remove
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The notification was successfully removed from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseNotificationModelDTO"
+        "404":
+          description: The notification was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationModelErrorDTO"
+  /notification/update:
+    post:
+      tags:
+      - Notification
+      summary: Update a notification
+      description: Updates an existing notification in the database.
+      operationId: updateNotification
+      requestBody:
+        description: the notification model to update
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NotificationModelDTO"
+        required: true
+      responses:
+        "200":
+          description: The notification was successfully updated in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseNotificationModelDTO"
+        "404":
+          description: The notification was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationModelErrorDTO"
+  /notification/{id}:
+    get:
+      tags:
+      - Notification
+      summary: Get a notification by ID
+      description: Retrieves a notification from the database by its ID.
+      operationId: getNotificationById
+      parameters:
+      - name: id
+        in: path
+        description: the ID of the notification to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The notification was successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseNotificationModelDTO"
+        "404":
+          description: The notification was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotificationModelErrorDTO"
+  /sound:
+    get:
+      tags:
+      - Sound
+      summary: Get all sound events
+      description: Retrieves all sound events from the database.
+      operationId: getAllSoundEvents
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The sound events were successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SoundResponseDTO"
+        "404":
+          description: No sound events were found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+    post:
+      tags:
+      - Sound
+      summary: Add a new sound event
+      description: Adds a new sound event to the database. The sound event is created
+        with the given properties.
+      operationId: addSoundEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SoundEventDTO"
+        required: true
+      responses:
+        "200":
+          description: The sound event was successfully added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundModelDTO"
+        "500":
+          description: The sound event could not be added to the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+  /sound/delete:
+    delete:
+      tags:
+      - Sound
+      summary: Delete all sound events
+      description: Deletes all sound events from the database.
+      operationId: deleteAllSoundEvents
+      responses:
+        "200":
+          description: All sound events were successfully deleted from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundModelDTO"
+  /sound/delete/{id}:
+    delete:
+      tags:
+      - Sound
+      summary: Remove a sound event by ID
+      description: Removes a sound event from the database by its ID.
+      operationId: removeSoundEventById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The sound event was successfully removed from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundModelDTO"
+        "404":
+          description: The sound event was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+  /sound/update:
+    post:
+      tags:
+      - Sound
+      summary: Update a sound event
+      description: Updates an existing sound event in the database.
+      operationId: updateSoundEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SoundEventDTO"
+        required: true
+      responses:
+        "200":
+          description: The sound event was successfully updated in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundModelDTO"
+        "404":
+          description: The sound event was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+  /sound/{id}:
+    get:
+      tags:
+      - Sound
+      summary: Get a sound by its ID
+      description: Retrieves a sound from the database by its ID.
+      operationId: getSoundById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: The sound was successfully retrieved from the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundModelDTO"
+        "404":
+          description: The sound was not found in the database.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+  /sound/{id}/sources:
+    get:
+      tags:
+      - Sound
+      summary: Get all sound file sources by an id
+      description: Get all sound file sources by a given sound event ID.
+      operationId: getSoundSourcesById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Pageable"
+      responses:
+        "200":
+          description: The sound file sources were successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+        "404":
+          description: No sound file sources were found for the given sound event
+            ID.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundErrorDTO"
+    post:
+      tags:
+      - Sound
+      summary: Create and link a SoundFileSource
+      description: Creates a new SoundFileSource and links it to a SoundEventEntity
+        by its ID.
+      operationId: createAndLinkSoundFileSource
+      parameters:
+      - name: id
+        in: path
+        description: the ID of the SoundEventEntity
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: the DTO containing source data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SoundFileSourceDTO"
+        required: true
+      responses:
+        "200":
+          description: The SoundFileSource was successfully created and linked.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+        "404":
+          description: The SoundEventEntity was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+  /sound/{id}/sources/delete/{soundId}:
+    delete:
+      tags:
+      - Sound
+      summary: Delete a linked SoundFileSource
+      description: Deletes an existing SoundFileSource linked to a SoundEventEntity
+        by its ID.
+      operationId: deleteLinkedSoundFileSource
+      parameters:
+      - name: id
+        in: path
+        description: The id of the sound event
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: soundID
+        in: path
+        description: The id of the sound file
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: soundId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The SoundFileSource was successfully deleted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+        "404":
+          description: The SoundFileSource or SoundEventEntity was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+  /sound/{id}/sources/update:
+    post:
+      tags:
+      - Sound
+      summary: Update a linked SoundFileSource
+      description: Updates an existing SoundFileSource linked to a SoundEventEntity
+        by its ID.
+      operationId: updateLinkedSoundFileSource
+      parameters:
+      - name: id
+        in: path
+        description: the ID of the SoundEventEntity
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: the DTO containing updated source data
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SoundFileSourceDTO"
+        required: true
+      responses:
+        "200":
+          description: The SoundFileSource was successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+        "404":
+          description: The SoundFileSource or SoundEventEntity was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseSoundFileSourceDTO"
+components:
+  schemas:
+    AttributeModelDTO:
+      required:
+      - defaultValue
+      - maximumValue
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the attribute
+          format: uuid
+        uiName:
+          minLength: 1
+          type: string
+          description: The name for the ui
+        variableName:
+          minLength: 1
+          type: string
+          description: The name which represents the variable after the generation
+        defaultValue:
+          minimum: 0
+          type: number
+          description: Default value of the attribute
+          format: double
+        maximumValue:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          description: Maximum value of the attribute
+          format: double
+    AttributeModelErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Attribute Model
+    FontModelDTO:
+      required:
+      - ascent
+      - comment
+      - height
+      - mapper
+      - provider
+      - texturePath
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the mode
+          format: uuid
+        uiName:
+          minLength: 1
+          type: string
+          description: Model Name for the ui
+        variableName:
+          minLength: 1
+          type: string
+          description: Name in the UI
+        provider:
+          minLength: 1
+          type: string
+          description: Which provider should be used
+        mapper:
+          minLength: 1
+          type: string
+          description: Internal mapper variable
+        texturePath:
+          minLength: 1
+          type: string
+          description: The path to the texture
+        comment:
+          type: string
+          description: The comment
+          nullable: true
+        ascent:
+          minimum: 0
+          type: integer
+          description: The ascent property
+          format: int32
+        height:
+          minimum: 0
+          type: integer
+          description: The height property
+          format: int32
+        chars:
+          type: array
+          description: The chars which are overwritten
+          items:
+            type: string
+    FontStringDTO:
+      required:
+      - id
+      - line
+      - orderIndex
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        line:
+          type: string
+        orderIndex:
+          type: integer
+          format: int32
+    FontStringResponseDTO:
+      type: object
+      description: Response DTO for Font String Model
+    ItemEnchantmentDTO:
+      required:
+      - id
+      - level
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Model
+          format: uuid
+        name:
+          minLength: 1
+          type: string
+          description: Name of the enchantment
+        level:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Level of the enchantment
+          format: int32
+    ItemEnchantmentResponseDTO:
+      type: object
+      description: Response DTO for Item Enchantment Model
+    ItemFlagDTO:
+      required:
+      - flag
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Model
+          format: uuid
+        flag:
+          minLength: 1
+          type: string
+          description: Flag of the Model
+    ItemLoreDTO:
+      required:
+      - orderIndex
+      - text
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Model
+          format: uuid
+        text:
+          minLength: 1
+          type: string
+          description: Text of the lore
+        orderIndex:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: Order index of the lore
+          format: int32
+    ItemLoreResponseDTO:
+      type: object
+      description: Response DTO for Item Lore Model
+    ItemModelDTO:
+      required:
+      - amount
+      - comment
+      - customModelData
+      - displayName
+      - group
+      - material
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the Model
+          format: uuid
+        uiName:
+          minLength: 1
+          type: string
+          description: Name in the UI
+        variableName:
+          minLength: 1
+          type: string
+          description: Variable name for the entity
+        comment:
+          type: string
+          description: Internal description of the item
+        displayName:
+          minLength: 1
+          type: string
+          description: The display name of the item
+        material:
+          minLength: 1
+          type: string
+          description: The material from the item
+        group:
+          minLength: 1
+          type: string
+          description: The group to identify their basic usage
+        customModelData:
+          minimum: 0
+          type: integer
+          description: Integer which refers to the customModelData index
+          format: int32
+        amount:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          description: The amount of the item
+          format: int32
+    ItemModelErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Item Model
+    NotificationModelDTO:
+      required:
+      - comment
+      - frameType
+      - material
+      - title
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the notification
+          format: uuid
+        uiName:
+          minLength: 1
+          type: string
+          description: Model variableName for the UI
+        variableName:
+          minLength: 1
+          type: string
+          description: Name in the UI
+        comment:
+          type: string
+          description: Comment of the notification
+        material:
+          minLength: 1
+          type: string
+          description: Material identifier
+        frameType:
+          minLength: 1
+          type: string
+          description: Type of frame
+        title:
+          minLength: 1
+          type: string
+          description: Title of the notification
+    NotificationModelErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Notification Model
+    Pageable:
+      required:
+      - size
+      - sort
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/Sort"
+      - type: object
+        properties:
+          number:
+            type: integer
+            format: int32
+          size:
+            type: integer
+            format: int32
+          mode:
+            $ref: "#/components/schemas/Pageable.Mode"
+          sort:
+            $ref: "#/components/schemas/Sort"
+    Pageable.Mode:
+      type: string
+      enum:
+      - CURSOR_NEXT
+      - CURSOR_PREVIOUS
+      - OFFSET
+    ResponseAttributeModelDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the Attribute Model
+          format: uuid
+        uiName:
+          type: string
+          description: The name for the ui
+        variableName:
+          type: string
+          description: The name which represents the variable after the generation
+        defaultValue:
+          type: number
+          description: Default value of the attribute
+          format: double
+        maximumValue:
+          type: number
+          description: Maximum value of the attribute
+          format: double
+      description: Attribute Model Data
+    ResponseFontModelDTO:
+      required:
+      - ascent
+      - comment
+      - height
+      - id
+      - mapper
+      - provider
+      - texturePath
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the model
+          format: uuid
+        uiName:
+          type: string
+          description: Model Name for the UI
+        variableName:
+          type: string
+          description: Variable name for the generation
+        provider:
+          type: string
+          description: Example comment
+        mapper:
+          type: string
+          description: Example comment
+        texturePath:
+          type: string
+          description: Example comment
+        comment:
+          type: string
+          description: Example comment
+        ascent:
+          type: integer
+          description: Example comment
+          format: int32
+        height:
+          type: integer
+          description: Example comment
+          format: int32
+      description: Font model data
+    ResponseFontModelErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message
+    ResponseFontStringDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Font String ID
+          format: uuid
+        line:
+          type: string
+          description: Font String Line
+        orderIndex:
+          type: integer
+          description: Font String order index
+          format: int32
+      description: Font String DTO
+    ResponseFontStringErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Font String model
+    ResponseItemEnchantmentDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Enchantment ID
+          format: uuid
+        name:
+          type: string
+          description: Enchantment Name
+        level:
+          type: integer
+          description: Enchantment Level
+          format: int32
+      description: Item Enchantment DTO
+    ResponseItemEnchantmentErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Enchantment model
+    ResponseItemFlagDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Flag ID
+          format: uuid
+        flag:
+          type: string
+          description: Flag Text
+      description: Item Flag DTO
+    ResponseItemFlagErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for flag model
+    ResponseItemLoreDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Lore ID
+          format: uuid
+        text:
+          type: string
+          description: Lore Text
+        orderIndex:
+          type: integer
+          description: Lore Sort Index
+          format: int32
+      description: Item Lore DTO
+    ResponseItemLoreErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for lore model
+    ResponseItemModelDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the model
+          format: uuid
+        uiName:
+          type: string
+          description: Model Name for the UI
+        variableName:
+          type: string
+          description: Variable name for the generation
+        comment:
+          type: string
+          description: Description of the item
+        displayName:
+          type: string
+          description: Display variableName of the item shown to users
+        material:
+          type: string
+          description: Material type of the item
+        groupName:
+          type: string
+          description: Group category variableName for the item
+        customModelData:
+          type: integer
+          description: Custom model data value for resource packs
+          format: int32
+        amount:
+          type: integer
+          description: Quantity of the item
+          format: int32
+        enchantments:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+          description: Map of enchantment names and their levels
+        lore:
+          type: array
+          description: List of text lines displayed in the item tooltip
+          items:
+            type: string
+        flags:
+          type: array
+          description: List of item flags that modify item behavior
+          items:
+            type: string
+      description: Item Model Data
+    ResponseNotificationModelDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the model
+          format: uuid
+        uiName:
+          type: string
+          description: Model Name for the UI
+        variableName:
+          type: string
+          description: Variable name for the generation
+        comment:
+          type: string
+          description: Description of the Notification
+        material:
+          type: string
+          description: Material type of the Notification
+        frameType:
+          type: string
+          description: Frame type of the Notification
+        title:
+          type: string
+          description: Title of the Notification
+      description: Notification Model Data
+    ResponseSoundErrorDTO:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: Error message
+      description: Error message for Sound model
+    ResponseSoundFileSourceDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the File Source
+          format: uuid
+        name:
+          type: string
+          description: Name to display it in the ui
+        volume:
+          type: number
+          description: Volume
+          format: float
+        pitch:
+          type: number
+          description: Pitch
+          format: float
+        weight:
+          type: integer
+          description: Weight
+          format: int32
+        stream:
+          type: boolean
+          description: Stream
+        attenuationDistance:
+          type: integer
+          description: AttenuationDistance
+          format: int32
+        preload:
+          type: boolean
+          description: preload
+        type:
+          type: string
+          description: type
+      description: Data transfer object for Sound models
+    ResponseSoundModelDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the Model
+          format: uuid
+        uiName:
+          type: string
+          description: Name to display it in the ui
+        variableName:
+          type: string
+          description: The name which is used for the variable generation
+        keyName:
+          type: string
+          description: They key of the sound
+        subTitle:
+          type: string
+          description: The subtitle which is display when the sound is played
+      description: Data transfer object for Sound models
+    Sort:
+      required:
+      - orderBy
+      type: object
+      properties:
+        orderBy:
+          type: array
+          items:
+            $ref: "#/components/schemas/Sort.Order"
+    Sort.Order:
+      required:
+      - direction
+      - ignoreCase
+      - property
+      type: object
+      properties:
+        ignoreCase:
+          type: boolean
+        direction:
+          $ref: "#/components/schemas/Sort.Order.Direction"
+        property:
+          type: string
+        ascending:
+          type: boolean
+    Sort.Order.Direction:
+      type: string
+      enum:
+      - ASC
+      - DESC
+    SoundEventDTO:
+      required:
+      - id
+      - keyName
+      - subTitle
+      - uiName
+      - variableName
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the Model
+          format: uuid
+        uiName:
+          minLength: 1
+          type: string
+          description: Name to display it in the ui
+        variableName:
+          minLength: 1
+          type: string
+          description: The name which is used for the variable generation
+        keyName:
+          minLength: 1
+          type: string
+          description: They key of the sound
+        subTitle:
+          minLength: 1
+          type: string
+          description: The subtitle which is display when the sound is played
+      description: The SoundEventDTO is a data transfer object that represents a SoundEventEntity.
+        It is used to transfer sound event data between the backend and frontend.
+    SoundFileSourceDTO:
+      required:
+      - attenuationDistance
+      - id
+      - name
+      - pitch
+      - preload
+      - stream
+      - type
+      - volume
+      - weight
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          minLength: 1
+          type: string
+        volume:
+          minimum: 0
+          type: number
+          format: float
+        pitch:
+          minimum: 0
+          type: number
+          format: float
+        weight:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          format: int32
+        stream:
+          type: boolean
+        attenuationDistance:
+          minimum: 0
+          exclusiveMinimum: true
+          type: integer
+          format: int32
+        preload:
+          type: boolean
+        type:
+          minLength: 1
+          type: string
+    SoundResponseDTO:
+      type: object
+      description: Response DTO for Sound model

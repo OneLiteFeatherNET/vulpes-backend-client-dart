@@ -16,12 +16,39 @@ void main() {
       // TODO
     });
 
+    // Create character of a font
+    //
+    // Create the character of a font in the database.
+    //
+    //Future<JsonObject> createChar(String id, FontStringDTO fontStringDTO) async
+    test('test createChar', () async {
+      // TODO
+    });
+
     // Delete all fonts
     //
     // Deletes all fonts from the database.
     //
     //Future<ResponseFontModelDTO> deleteAllFonts() async
     test('test deleteAllFonts', () async {
+      // TODO
+    });
+
+    // Delete character of a font
+    //
+    // Delete the character of a font in the database.
+    //
+    //Future<BuiltList<JsonObject>> deleteChar(String fontId) async
+    test('test deleteChar', () async {
+      // TODO
+    });
+
+    // Delete character of a font
+    //
+    // Delete the character of a font in the database.
+    //
+    //Future<ResponseFontStringDTO> deleteChar1(String fontId, String charId) async
+    test('test deleteChar1', () async {
       // TODO
     });
 
@@ -47,7 +74,7 @@ void main() {
     //
     // Gets the characters of a font by its ID from the database.
     //
-    //Future<ResponseFontModelCharsDTO> getCharsById(String id) async
+    //Future<JsonObject> getCharsById(String id, Pageable pageable) async
     test('test getCharsById', () async {
       // TODO
     });
@@ -58,6 +85,15 @@ void main() {
     //
     //Future<ResponseFontModelDTO> getFontById(String id) async
     test('test getFontById', () async {
+      // TODO
+    });
+
+    // Update character of a font
+    //
+    // Updates the character of a font in the database.
+    //
+    //Future<BuiltList<JsonObject>> updateChar(String id, FontStringDTO fontStringDTO) async
+    test('test updateChar', () async {
       // TODO
     });
 

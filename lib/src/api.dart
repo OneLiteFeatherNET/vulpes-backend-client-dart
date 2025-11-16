@@ -9,11 +9,11 @@ import 'package:vulpes_backend_client/src/auth/api_key_auth.dart';
 import 'package:vulpes_backend_client/src/auth/basic_auth.dart';
 import 'package:vulpes_backend_client/src/auth/bearer_auth.dart';
 import 'package:vulpes_backend_client/src/auth/oauth.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/attribute_api.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/font_api.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/item_api.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/notification_api.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/api/sound_api.dart';
+import 'package:vulpes_backend_client/src/api/attribute_api.dart';
+import 'package:vulpes_backend_client/src/api/font_api.dart';
+import 'package:vulpes_backend_client/src/api/item_api.dart';
+import 'package:vulpes_backend_client/src/api/notification_api.dart';
+import 'package:vulpes_backend_client/src/api/sound_api.dart';
 
 class VulpesBackendClient {
   static const String basePath = r'http://localhost';

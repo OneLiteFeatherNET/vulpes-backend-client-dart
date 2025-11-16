@@ -7,12 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AttributeModelDTO, () {
-    // ID of the attribute
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
     // The name for the ui
     // String uiName
     test('to test the property `uiName`', () async {
@@ -34,6 +28,12 @@ void main() {
     // Maximum value of the attribute
     // double maximumValue
     test('to test the property `maximumValue`', () async {
+      // TODO
+    });
+
+    // ID of the attribute
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 

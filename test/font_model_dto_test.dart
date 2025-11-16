@@ -7,12 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(FontModelDTO, () {
-    // ID of the mode
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
     // Model Name for the ui
     // String uiName
     test('to test the property `uiName`', () async {
@@ -58,6 +52,12 @@ void main() {
     // The height property
     // int height
     test('to test the property `height`', () async {
+      // TODO
+    });
+
+    // ID of the mode
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 

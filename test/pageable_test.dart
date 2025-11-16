@@ -12,23 +12,23 @@ void main() {
       // TODO
     });
 
-    // int number
-    test('to test the property `number`', () async {
-      // TODO
-    });
-
     // int size
     test('to test the property `size`', () async {
       // TODO
     });
 
-    // PageableMode mode
-    test('to test the property `mode`', () async {
+    // Sort sort
+    test('to test the property `sort`', () async {
       // TODO
     });
 
-    // Sort sort
-    test('to test the property `sort`', () async {
+    // int number
+    test('to test the property `number`', () async {
+      // TODO
+    });
+
+    // PageableMode mode
+    test('to test the property `mode`', () async {
       // TODO
     });
 

@@ -10,36 +10,43 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
-import 'package:built_value/iso_8601_date_time_serializer.dart';
-import 'package:vulpes_backend_client/src/date_serializer.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/date.dart';
 
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/attribute_model_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/font_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/item_model_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/notification_model_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/pageable_mode.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_attribute_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_chars_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_font_model_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_enchantment_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_flag_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_item_model_lore_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_notification_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_error_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_file_source_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/response_sound_model_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sort_order_direction.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_event_dto.dart';
-import 'package:vulpes_backend_client/src/net/onelitefeather/vulpes/backend/client/model/sound_file_source_dto.dart';
+import 'package:time_machine/time_machine.dart';
+import 'package:vulpes_backend_client/src/offset_date_serializer.dart';
+import 'package:vulpes_backend_client/src/model/attribute_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/attribute_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/font_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/font_string_dto.dart';
+import 'package:vulpes_backend_client/src/model/item_enchantment_dto.dart';
+import 'package:vulpes_backend_client/src/model/item_flag_dto.dart';
+import 'package:vulpes_backend_client/src/model/item_lore_dto.dart';
+import 'package:vulpes_backend_client/src/model/item_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/item_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/notification_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/notification_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/pageable.dart';
+import 'package:vulpes_backend_client/src/model/pageable_mode.dart';
+import 'package:vulpes_backend_client/src/model/response_attribute_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_font_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_font_model_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_font_string_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_font_string_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_enchantment_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_enchantment_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_flag_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_flag_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_lore_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_lore_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_item_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_notification_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_sound_error_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_sound_file_source_dto.dart';
+import 'package:vulpes_backend_client/src/model/response_sound_model_dto.dart';
+import 'package:vulpes_backend_client/src/model/sort.dart';
+import 'package:vulpes_backend_client/src/model/sort_order.dart';
+import 'package:vulpes_backend_client/src/model/sort_order_direction.dart';
+import 'package:vulpes_backend_client/src/model/sound_event_dto.dart';
+import 'package:vulpes_backend_client/src/model/sound_file_source_dto.dart';
 
 part 'serializers.g.dart';
 
@@ -47,6 +54,10 @@ part 'serializers.g.dart';
   AttributeModelDTO,
   AttributeModelErrorDTO,
   FontModelDTO,
+  FontStringDTO,
+  ItemEnchantmentDTO,
+  ItemFlagDTO,
+  ItemLoreDTO,
   ItemModelDTO,
   ItemModelErrorDTO,
   NotificationModelDTO,
@@ -54,13 +65,17 @@ part 'serializers.g.dart';
   Pageable,
   PageableMode,
   ResponseAttributeModelDTO,
-  ResponseFontModelCharsDTO,
   ResponseFontModelDTO,
   ResponseFontModelErrorDTO,
+  ResponseFontStringDTO,
+  ResponseFontStringErrorDTO,
+  ResponseItemEnchantmentDTO,
+  ResponseItemEnchantmentErrorDTO,
+  ResponseItemFlagDTO,
+  ResponseItemFlagErrorDTO,
+  ResponseItemLoreDTO,
+  ResponseItemLoreErrorDTO,
   ResponseItemModelDTO,
-  ResponseItemModelEnchantmentDTO,
-  ResponseItemModelFlagDTO,
-  ResponseItemModelLoreDTO,
   ResponseNotificationModelDTO,
   ResponseSoundErrorDTO,
   ResponseSoundFileSourceDTO,
@@ -77,12 +92,24 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<ResponseAttributeModelDTO>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseItemEnchantmentDTO)]),
+        () => ListBuilder<ResponseItemEnchantmentDTO>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseItemModelDTO)]),
         () => ListBuilder<ResponseItemModelDTO>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseItemLoreDTO)]),
+        () => ListBuilder<ResponseItemLoreDTO>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(JsonObject)]),
         () => ListBuilder<JsonObject>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ResponseItemFlagDTO)]),
+        () => ListBuilder<ResponseItemFlagDTO>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(ResponseFontModelDTO)]),
@@ -94,9 +121,9 @@ Serializers serializers = (_$serializers.toBuilder()
       )
       ..add(Sort.serializer)
       ..add(const OneOfSerializer())
-      ..add(const AnyOfSerializer())
-      ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
+      ..add(const AnyOfSerializer())      
+      ..add(const OffsetDateSerializer())
+      ..add(const OffsetDateTimeSerializer())
     ).build();
 
 Serializers standardSerializers =

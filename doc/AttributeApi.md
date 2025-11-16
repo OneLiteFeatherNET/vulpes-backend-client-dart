@@ -10,9 +10,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addAttribute**](AttributeApi.md#addattribute) | **POST** /attribute | Add a new attribute
-[**deleteAllAttributes**](AttributeApi.md#deleteallattributes) | **DELETE** /attribute/delete/all | Delete all attributes
+[**deleteAllAttributes**](AttributeApi.md#deleteallattributes) | **DELETE** /attribute/delete | Delete all attributes
 [**deleteAttributeById**](AttributeApi.md#deleteattributebyid) | **DELETE** /attribute/delete/{id} | Delete an attribute by ID
-[**getAllAttributes**](AttributeApi.md#getallattributes) | **GET** /attribute/all | Get all attributes
+[**getAllAttributes**](AttributeApi.md#getallattributes) | **GET** /attribute | Get all attributes
 [**updateAttribute**](AttributeApi.md#updateattribute) | **POST** /attribute/update | Update an attribute
 
 

@@ -10,8 +10,8 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addNotification**](NotificationApi.md#addnotification) | **POST** /notification | Add a new notification
-[**deleteAllNotifications**](NotificationApi.md#deleteallnotifications) | **DELETE** /notification/delete/all | Delete all notifications
-[**getAllNotifications**](NotificationApi.md#getallnotifications) | **GET** /notification/all | Get all notifications
+[**deleteAllNotifications**](NotificationApi.md#deleteallnotifications) | **DELETE** /notification/delete | Delete all notifications
+[**getAllNotifications**](NotificationApi.md#getallnotifications) | **GET** /notification | Get all notifications
 [**getNotificationById**](NotificationApi.md#getnotificationbyid) | **GET** /notification/{id} | Get a notification by ID
 [**removeNotificationById**](NotificationApi.md#removenotificationbyid) | **DELETE** /notification/delete/{id} | Remove a notification by ID
 [**updateNotification**](NotificationApi.md#updatenotification) | **POST** /notification/update | Update a notification

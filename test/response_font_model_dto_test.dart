@@ -61,11 +61,5 @@ void main() {
       // TODO
     });
 
-    // Example comment
-    // BuiltList<String> chars
-    test('to test the property `chars`', () async {
-      // TODO
-    });
-
   });
 }

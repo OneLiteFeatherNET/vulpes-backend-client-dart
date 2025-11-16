@@ -9,10 +9,10 @@ import 'package:vulpes_backend_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderBy** | [**BuiltList&lt;SortOrder&gt;**](SortOrder.md) |  | 
-**number** | **int** |  | [optional] 
 **size** | **int** |  | 
-**mode** | [**PageableMode**](PageableMode.md) |  | [optional] 
 **sort** | [**Sort**](Sort.md) |  | 
+**number** | **int** |  | [optional] 
+**mode** | [**PageableMode**](PageableMode.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
