@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-component-in-tag": false,
+  "include-v-in-tag": true,
+  "packages": {
+    ".": {
+      "package-name": "vulpes-backend-client-dart",
+      "changelog-path": "CHANGELOG.md"
+    }
+  },
+  "bootstrap-sha": "7ab6cc8faaabd8139244b5c4397afd823e3cee2d"
+}
