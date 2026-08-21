@@ -8,5 +8,6 @@
       "package-name": "vulpes-backend-client-dart",
       "changelog-path": "CHANGELOG.md"
     }
-  }
+  },
+  "bootstrap-sha": "7ab6cc8faaabd8139244b5c4397afd823e3cee2d"
 }
